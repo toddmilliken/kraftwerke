@@ -1,0 +1,31 @@
+//---
+// DEFAULT FORM ELEMENTS
+//---
+
+
+// all labels
+label {
+	display: block;
+	font-family: $primary-face;
+	font-weight: 600;
+	margin-bottom: rem(6);
+	vertical-align: middle;
+}
+
+
+// all buttons
+[type="submit"] ,
+[type="button"] ,
+button {
+	-webkit-border-radius: 0; // removes default webkit border-radius
+	cursor: pointer;
+	outline: none;
+}
+
+
+// all inputs but radio/checkbox
+input {
+	&:not([type="checkbox"]):not([type="radio"]) {
+		border-radius: 0;
+	}
+}

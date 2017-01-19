@@ -1,0 +1,56 @@
+%btn {
+	background-color: $primary-color;
+	color: white;
+	display: inline-block;
+	font-weight: 700;
+	line-height: 1.1;
+	padding: rem(16) rem(24);
+	text-decoration: none;
+	text-transform: uppercase;
+	transition-duration: 250ms;
+	transition-property: background-color, color;
+	transition-timing-function: ease;	
+	
+	&:hover {
+		background-color: lighten($primary-color, 6%);
+		color: white;
+	}
+	
+}
+
+
+// Primary Button
+.btn {
+	@extend %btn;
+
+	&--minimalist {
+		background: transparent;
+		border: rem(2) solid white;
+		color: $body-color;
+		
+		&:hover {
+			background: white;
+			color: $body-color;
+		}
+	}
+
+}
+
+.more {
+	font-weight: 700;
+	letter-spacing: rem(1);
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: color 250ms ease 0s; // added in case .more is a span tag
+
+	&:after {
+		content: $fa-chevron-right;
+		display: inline-block;
+		font-family: $font-awesome;
+		font-size: rem(10);
+	    margin-top: rem(5);
+		margin-left: rem(10);
+		vertical-align: top;
+	}
+
+}

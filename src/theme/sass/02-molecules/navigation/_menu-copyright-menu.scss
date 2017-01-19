@@ -1,0 +1,40 @@
+.copyright-menu {
+	@include clearfix;
+}
+
+.copyright-menu .menu-item {
+	float: left;
+	line-height: 2;
+	margin-right: rem(30);
+	
+	
+	// menu-item separators
+	&:after {
+		background-color: theme-color("gray");
+		content: "";
+		height: rem(14);
+		position: absolute;
+			top: 50%;
+			right: rem(-16);
+		transform: translateY(-50%);
+		width: rem(1);
+	}
+	
+	
+	// removes margin-right and menu-item separator on last-child.
+	&:last-child {
+		margin-right: 0;
+	}	
+	
+	&:last-child:after {
+		display: none;
+	}
+	
+	
+}
+
+
+// hover state
+.copyright-menu .menu-item a:hover {
+	text-decoration: underline;
+}

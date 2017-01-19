@@ -1,0 +1,14 @@
+.pagination {
+	border-top: 1px solid theme-color("gray");
+	color: theme-color("gray");
+	font-weight: 700;
+	margin-top: rem(30);
+	padding: rem(30) 0;
+	text-align: center;
+	
+	a ,
+	span {
+		margin: rem(6);
+	}
+	
+}

@@ -1,0 +1,68 @@
+.block-media {	
+	margin-bottom: rem(30);
+	
+	&__link-wrapper {
+		color: inherit;
+		display: block;
+		text-decoration: none;	
+		transition: opacity 250ms ease 0s;	
+	}
+	
+	&__link-wrapper:hover {
+		color: inherit;
+		opacity: .7;
+		text-decoration: none;
+		
+	}
+	
+	
+	&__media {
+		margin-bottom: rem(12);
+		max-width: 100%;
+		width: rem(180);
+		
+		img ,
+		svg ,
+		video ,
+		iframe {
+			height: auto;
+			width: 100%;
+		}
+		
+	}
+	
+}
+
+
+
+/** Floats media to the left, prevents content from wrapping underneath */
+@include smartphone-up {
+	
+	.block-media {
+		@include clearfix;
+		
+		&__media--left {
+			float: left;
+			margin-right: rem(40);
+			width: rem(220);
+		}
+		
+		
+		&__media + &__body {
+			overflow: hidden;
+		}
+	
+	}
+
+}
+
+
+
+/** Increases image size + spacing */
+@include sidebar-up {
+
+	.block-media__media {
+		width: rem(350);
+	}
+
+}

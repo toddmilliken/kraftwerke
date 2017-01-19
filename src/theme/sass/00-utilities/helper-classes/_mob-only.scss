@@ -1,0 +1,8 @@
+@include smartphone-up {
+
+	/* Hide elements with this class when below the smartphone breakpoint */
+ 	.mob-only {
+	 	display: none;
+ 	}
+
+}

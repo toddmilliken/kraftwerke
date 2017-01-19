@@ -1,0 +1,59 @@
+// Idea from https://scotch.io/tutorials/aesthetic-sass-2-colors and http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+
+//---
+// THEME COLORS
+//---
+$theme-colors: (
+  "sky-blue": (
+    "base": #3aa5d6
+  ),
+  "gray": (
+    "base": #6d727c
+  ),
+  "royal-blue": (
+    "base": #203b6b
+  ),
+  "meadow-green": (
+    "base": #30b89a
+  ),
+  "lime-green": (
+    "base": #b8d248
+  ),
+  "sun-orange": (
+    "base": #f69331
+  ),
+  "carmine-pink": (
+    "base": #e54d42
+  ),
+  "red-violet": (
+    "base": #b9247f
+  )
+);
+
+
+//---
+// COMMON COLORS 
+//---
+$primary-color: theme-color("sky-blue");
+$body-color: theme-color("gray");
+
+//---
+// SOCIAL MEDIA COLORS
+//---
+$facebook: #3b5998;
+$flickr: #ff0084;
+$googleplus: #dd4b39;
+$instagram: #517fa4;
+$linkedin: #007bb6;
+$pinterest: #cb2027;
+$rss: #f26522;
+$tumblr: #32506d;
+$twitter: #00aced;
+$vimeo: #aad450;
+$wordpress: #21759b;
+$yahoo: #7b0099;
+$youtube: #bb0000;
+
+
+//! RE-USABLE COLORS COMPONENTS (example: form inputs, borders, common modular colors)
+$form-required: #e50000;

@@ -1,0 +1,11 @@
+/*
+ * Remove default button style
+ * useful when needing to create a button that is just an icon
+ */
+.no-button-style {
+  appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}

@@ -1,0 +1,103 @@
+//---
+// MEDIA QUERIES
+//---
+
+@mixin large-desktop {
+	@media (min-width: #{ em($large-desktop-width + 1) }) {
+		@content;
+	}
+}
+
+@mixin medium-desktop {
+	@media (min-width: #{ em($medium-desktop-width + 1) }) {
+		@content;
+	}
+}
+
+
+// Desktop menu and up
+@mixin desktop-menu {
+	@media (min-width: #{ em($mobile-menu-initialize + 1) }) {
+		@content;
+	}
+}
+
+// Mobile menu and down
+@mixin mobile-menu {
+	@media (max-width: #{ em($mobile-menu-initialize) }) {
+		@content;
+	}
+}
+
+
+// When design becomes fixed 
+@mixin inner-up {
+	@media (min-width: #{ em($width-center + 41) }) {
+		@content;
+	}
+}
+
+
+// When design becomes fluid
+@mixin inner-down {
+	@media (max-width: #{ em($width-center + 40) }) {
+		@content;
+	}
+}
+
+
+// Tablet Landscape
+@mixin tablet-landscape-up {
+	@media (min-width: #{ em($tablet-landscape-width + 1) }) {
+		@content;
+	}
+}
+
+@mixin tablet-landscape-down {
+	@media (max-width: #{ em($tablet-landscape-width) }) {
+		@content;
+	}
+}
+
+// Tablet Portrait
+@mixin tablet-portrait-up {
+	@media (min-width: #{ em($tablet-portrait-width + 1) }) {
+		@content;
+	}
+}
+
+@mixin tablet-portrait-down {
+	@media (max-width: #{ em($tablet-portrait-width) }) {
+		@content;
+	}
+}
+
+
+// Sidebar initialize
+@mixin sidebar-up {
+	@media (min-width: #{ em($sidebar-initialize + 1)}) {
+		@content;
+	}
+}
+
+
+// Sidebar disabled
+@mixin sidebar-down {
+	@media (max-width: #{ em($sidebar-initialize)}) {
+		@content;
+	}
+}
+
+
+// Mobile Landscape
+@mixin smartphone-up {
+	@media (min-width: #{ em($smartphone-landscape-width + 1) }) {
+		@content;
+	}
+}
+
+@mixin smartphone-down {
+	@media (max-width: #{ em($smartphone-landscape-width) }) {
+		@content;
+	}
+}

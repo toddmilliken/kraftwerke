@@ -1,0 +1,81 @@
+//--- 
+// BEGIN EM-BASE STYLES
+//---
+
+$mob-menu-height: 5px;
+$mob-menu-width: 50px;
+$mob-menu-container-height: $mob-menu-height * 5;
+
+.navicon {
+  display: none;
+  margin-top: rem(-$mob-menu-container-height / 2);
+  height: rem($mob-menu-container-height);
+  position: absolute;
+    top: 50%;
+    right: rem(20);
+    z-index: 2;
+  transition: background .3s ease-in-out;
+  width: rem($mob-menu-width);
+
+  &__trigger {
+    background: #333333;
+    height: rem($mob-menu-height);
+    position: relative;
+    transition: background 0s .3s;
+
+    &::before,
+    &::after {
+      background: inherit;
+      content: "";
+      height: $mob-menu-height;
+      position: absolute;
+        left: 0;
+      transition-delay: .3s, 0s;
+      transition-duration: .3s, .3s;
+      width: 100%;
+    }
+
+    &::before {
+      top: rem(-$mob-menu-height * 2);
+      transition-property: top, transform;
+    }
+
+    &::after {
+      bottom: rem(-$mob-menu-height * 2);
+      transition-property: bottom, transform;
+    }
+
+    &--open {
+      background: none;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+
+      &::before,
+      &::after {
+        background: #666666;
+        transition-delay: 0s, .3s;
+      }
+    }
+  }
+}
+//--- 
+// END EM-BASE STYLES
+//---
+
+
+/** Displays navicon when mobile-menu is visible */
+@include desktop-menu {
+	
+	.navicon {
+		display: block;
+	}
+	
+}

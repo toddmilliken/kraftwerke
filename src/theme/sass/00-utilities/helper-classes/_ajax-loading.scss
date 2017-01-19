@@ -1,0 +1,9 @@
+/* Ensures any ajax loader is centered and only displayed when marked as visible */
+.ajax-loading {
+ 	display: none;
+ 	margin: 0 auto;
+
+ 	&.visible {
+   	display: inline-block;
+ 	}
+}

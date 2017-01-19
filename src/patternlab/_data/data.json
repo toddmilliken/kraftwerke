@@ -1,0 +1,69 @@
+{
+	"brand-colors": [
+		{
+			"name" : "sky-blue"
+		},
+		{
+			"name" : "meadow-green"
+		}
+	],
+	"neutral-colors": [
+		{
+			"name" : "gray"
+		}
+	],
+	"utility-colors": [
+		{
+			"name" : "royal-blue"
+		},
+		{
+			"name" : "lime-green"
+		},
+		{
+			"name" : "sun-orange"
+		},
+		{
+			"name" : "carmine-pink"
+		},
+		{
+			"name" : "red-violet"
+		}
+		
+	],
+	"img": {
+		"wp-thumbnail": {
+			"src": "../../images/fpo/wp-thumbnail.jpg",
+			"alt": "WP Default Image Size - Thumbnail"
+		},
+		"wp-medium": {
+			"src": "../../images/fpo/wp-medium.jpg",
+			"alt": "WP Default Image Size - Medium"
+		},
+		"wp-large" : {
+			"src" : "../../images/fpo/wp-large.jpg",
+			"alt" : "WP Default Image Size - Large"
+		},
+		"landscape-16x9-hero": {
+			"src" : "../../images/fpo/landscape-16x9-hero.jpg",
+			"alt" : "Intended for Home Panel background 1600px by 900px."	
+		}
+	},
+	"company": {
+		"location" : "City, State" ,
+		"name" : "Company Name"
+	},
+	"page": {
+		"title" : "Page Title (H1)" ,
+		"subtitle" : "Lorem ipsum dolor sit amet, consectetuer adipiscing" ,
+		"description" : "Pellentesque nulla nisl, luctus vitae pretium vitae, faucibus sed lectus. Vestibulum eget facilisis risus. Fusce ac cursus ante, vel consequat nibh."						
+	},
+	"btn" : {
+		"class" : "btn" ,
+		"text" : "Learn More" 
+	},
+	"more" : {
+		"class" : "more" ,
+		"text" : "Learn More" 
+	},
+	"year" : "2017"
+}

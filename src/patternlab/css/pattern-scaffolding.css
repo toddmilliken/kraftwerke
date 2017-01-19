@@ -1,0 +1,207 @@
+/**
+ * This stylesheet is for styles you want to include only when displaying demo
+ * styles for grids, animations, color swatches, etc.
+ * These styles will not be your production CSS.
+ */
+#sg-patterns {
+  box-sizing: border-box !important;
+  max-width: 100%;
+  padding: 0 .5em;
+}
+
+.demo-animate {
+  background: #ddd;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sg-colors {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.sg-colors li {
+  -ms-flex: auto;
+  -webkit-flex: auto;
+          flex: auto;
+  padding: .3em;
+  margin: 0 .5em .5em 0;
+  min-width: 5em;
+  max-width: 14em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.sg-swatch {
+  display: block;
+  height: 4em;
+  margin-bottom: .3em;
+  border-radius: 5px;
+}
+
+.sg-label {
+  font-size: 90%;
+  line-height: 1;
+}
+
+.sg-tabs-list li {
+  padding: 0;
+}
+
+.sg-tabs-list li:before {
+  display: none;
+}
+
+.swatches {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.swatch {
+  border: 1px solid #cecece;
+  display: block;
+  height: 170px;
+  position: relative;
+  width: calc(20% - 1rem);
+}
+
+.swatch:before, .swatch:after {
+  content: "";
+  display: block;
+  font-family: inherit;
+  font-size: 85%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: .5rem;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  width: 100%;
+  word-wrap: nowrap;
+}
+
+.swatch:before {
+  background-color: white;
+  border-top: 1px solid #cecece;
+  color: inherit;
+  font-weight: bold;
+  height: 30%;
+}
+
+.swatch:after {
+  color: gray;
+  font-size: 70%;
+  padding-top: 1.5rem;
+}
+
+.swatch--sky-blue {
+  background-color: #3aa5d6;
+}
+
+.swatch--sky-blue:before {
+  content: "sky-blue";
+}
+
+.swatch--sky-blue:after {
+  content: "#3aa5d6";
+}
+
+.swatch--gray {
+  background-color: #6d727c;
+}
+
+.swatch--gray:before {
+  content: "gray";
+}
+
+.swatch--gray:after {
+  content: "#6d727c";
+}
+
+.swatch--royal-blue {
+  background-color: #203b6b;
+}
+
+.swatch--royal-blue:before {
+  content: "royal-blue";
+}
+
+.swatch--royal-blue:after {
+  content: "#203b6b";
+}
+
+.swatch--meadow-green {
+  background-color: #30b89a;
+}
+
+.swatch--meadow-green:before {
+  content: "meadow-green";
+}
+
+.swatch--meadow-green:after {
+  content: "#30b89a";
+}
+
+.swatch--lime-green {
+  background-color: #b8d248;
+}
+
+.swatch--lime-green:before {
+  content: "lime-green";
+}
+
+.swatch--lime-green:after {
+  content: "#b8d248";
+}
+
+.swatch--sun-orange {
+  background-color: #f69331;
+}
+
+.swatch--sun-orange:before {
+  content: "sun-orange";
+}
+
+.swatch--sun-orange:after {
+  content: "#f69331";
+}
+
+.swatch--carmine-pink {
+  background-color: #e54d42;
+}
+
+.swatch--carmine-pink:before {
+  content: "carmine-pink";
+}
+
+.swatch--carmine-pink:after {
+  content: "#e54d42";
+}
+
+.swatch--red-violet {
+  background-color: #b9247f;
+}
+
+.swatch--red-violet:before {
+  content: "red-violet";
+}
+
+.swatch--red-violet:after {
+  content: "#b9247f";
+}
+
+.primary-face {
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+}

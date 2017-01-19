@@ -1,0 +1,12 @@
+/* Forces image to be the full width of the viewport or nearest relative parent container  */
+.image-full-width {
+  height: auto;
+  min-height: 100%;
+  // min-width: YOUR VALUE
+  // You will want to add a min-width to the element/selector this is getting applied to
+  position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  width: 100%;
+}

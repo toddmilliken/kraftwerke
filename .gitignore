@@ -1,0 +1,19 @@
+# Ignore WordPress files in the root
+.htaccess
+index.php
+
+# Ignore directory where WordPress lives
+/site
+
+# Ignore vendor scripts that should be downloading latest versions in each project
+src/theme/js/vendor*
+
+# Ignore the ".sass-cache" directory and .DS_Store files
+.sass-cache/
+.DS_Store
+
+# Ignore node modules
+node_modules/
+
+# Ignore Patternlab directory
+/patternlab

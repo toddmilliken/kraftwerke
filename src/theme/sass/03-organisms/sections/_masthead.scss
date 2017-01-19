@@ -1,0 +1,33 @@
+.masthead {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	position: relative;
+	
+	.page-title ,
+	.page-subtitle {
+		color: inherit;
+	}
+	
+	// IE Fix so we can add a min-height to flex-child
+	// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
+	&__flex-parent {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+	
+	// IE Fix so we can add a min-height to flex-child
+	// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
+	&__flex-child {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		min-height: rem(450);
+		padding-top: rem($siteheader-height + 30);
+		padding-bottom: rem(30);
+		width: 100%;
+	}
+	
+}

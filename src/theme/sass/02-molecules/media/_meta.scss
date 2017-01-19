@@ -1,0 +1,38 @@
+.meta {
+	@include clearfix;
+	font-size: rem(14);
+	font-weight: 700;
+	margin-bottom: rem(10);
+	text-transform: uppercase;	
+	
+	li {
+		float: left;
+		margin-right: rem(30);
+		padding-bottom: 0;
+		padding-left: 0;
+	}
+	
+	li:before {
+		content: "";
+	}
+	
+	li:after {
+		color: $primary-color;
+		content: "\2022";
+		position: absolute;
+			right: rem(-17);
+	}
+	
+	li:first-child {
+		padding-left: 0;
+	}
+	
+	li:last-child {
+		margin-right: 0;
+	}
+	
+	li:last-child:after {
+		content: "";
+	}
+	
+}

@@ -1,0 +1,40 @@
+//---
+// MULTI-COLUMN LISTS (PROGRESSIVE ENHANCEMENT)
+//---
+@include smartphone-up {
+	
+	.two-column ,
+	.three-column ,
+	.four-column {
+		column-gap: rem(30);
+		padding-left: 0;
+	
+		li {
+			break-inside: avoid;
+			padding-bottom: rem(10);
+			padding-left: rem(30);
+			
+			&:before {
+				left: rem(10);
+			}
+
+	        + li {
+	            margin-top: 0;
+	        }
+	        
+		}
+	}
+	
+	.two-column {
+		column-count: 2;
+	}
+
+	.three-column {
+		column-count: 3;
+	}
+
+	.four-column {
+		column-count: 4;
+	}
+    
+}

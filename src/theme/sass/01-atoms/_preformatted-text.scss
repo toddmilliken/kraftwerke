@@ -1,0 +1,19 @@
+code,
+pre {
+	background-color: #efefef;
+	border-radius: rem(5);
+	color: #333333;
+	font-family: "Lucida Console", Courier, monospace;
+}
+
+code {
+	font-size: rem(15);
+	padding: rem(5) rem(10);
+}
+
+pre {
+	border-bottom: solid rem(5) $primary-color;
+	font-size: rem(12);
+	margin-bottom: rem(30);
+	padding: rem(25);
+}

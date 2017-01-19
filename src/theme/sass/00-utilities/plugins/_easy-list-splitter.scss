@@ -1,0 +1,45 @@
+//---
+// EASY LIST SPLITTER
+// The CSS for a jQuery plugin that allows for any <ul> or <ol> element to be
+// split multiple corresponding elements with the intent of display these
+// element in columns.
+//
+// @ref: https://github.com/steelx/easyListSplitter
+//---
+
+[class*="listContainer"] {
+    margin-bottom: rem($margin-bottom);
+
+    &:before {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .two-column,
+    .three-column,
+    .four-column {
+        margin-bottom: 0;
+    }
+
+    @include smartphone-up {
+
+        .two-column,
+        .three-column,
+        .four-column {
+            float: left;
+        }
+
+        .two-column {
+            width: 50%;
+        }
+
+        .three-column {
+            width: percentage(4/12);
+        }
+
+        .four-column {
+            width: 25%;
+        }
+    }
+}

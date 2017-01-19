@@ -1,0 +1,22 @@
+//---
+// Aspect Ratio Mixin
+//---
+
+  @mixin aspect-ratio($width, $height) {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: "";
+      padding-top: ($height / $width) * 100%;
+      width: 100%;
+    }
+
+    > .aspect-ratio__content {
+      position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+  }

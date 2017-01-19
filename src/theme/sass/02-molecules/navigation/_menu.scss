@@ -1,0 +1,46 @@
+/** 
+ * Base styles for Wordpress Navigation Menus. 
+ * Resets the default list styles for all navigation menus. 
+ */ 
+.menu ,
+.menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+
+.menu li {
+	padding-bottom: inherit;
+	padding-left: 0;
+	position: relative;	
+	
+	&:before {
+		content: "";
+	}
+	
+	li:first-child {
+		padding-top: inherit;
+	}
+	
+	li:last-child {
+		padding-top: inherit;
+	}
+
+}
+
+
+/** 
+ * Resets the default link styles for all navigation menus.
+ * Turns all navigation links block-level elements.
+ */
+.menu a {
+	color: inherit;
+	display: block;
+	position: relative;
+	text-decoration: none;
+	
+	&:hover {
+  	text-decoration: none;
+	}
+	
+}

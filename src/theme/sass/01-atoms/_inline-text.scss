@@ -1,0 +1,75 @@
+a {
+	color: $primary-color;
+	text-decoration: underline;
+	transition: color 250ms ease 0s;
+	
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+strong ,
+b {
+	font-weight: 700;
+}
+
+em ,
+i ,
+var {
+	font-style: italic;
+}
+
+u ,
+ins {
+	text-decoration: underline;
+}
+
+s ,
+strike ,
+del {
+	text-decoration: line-through;
+}
+
+small ,
+sub ,
+sup {
+	font-size: smaller;
+}
+
+sub {
+	vertical-align: sub;
+}
+
+sup {
+	vertical-align: super;
+}
+
+abbr {
+	border-bottom: 1px dotted #808080;
+	cursor: help;
+}
+
+tt , 
+code , 
+kbd , 
+samp {
+    font-family: monospace;
+}
+
+q {
+	display: inline;
+	
+	&:before {
+		content: open-quote;
+	}
+	
+	&:after {
+		content: close-quote;
+	}
+		
+}
+
+mark {
+	background-color: yellow;
+	color: black;
+}

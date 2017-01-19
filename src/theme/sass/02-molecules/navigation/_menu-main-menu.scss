@@ -1,0 +1,74 @@
+//---
+// SHARED STYLES ON MOBILE + DESKTOP
+//---
+.main-menu a {
+	transition-delay: 0s;
+	transition-duration: 250ms;
+	transition-property: background-color, color;
+	transition-timing-function: ease;
+}
+
+
+//---
+// MOBILE STYLES ONLY
+//---
+@include mobile-menu {
+	
+	.main-menu {
+		font-size: rem(18);
+	}
+	
+}
+
+
+
+//---
+// DESKTOP STYLES ONLY
+//---
+@include desktop-menu {
+	
+	
+	.main-menu {
+		
+		
+		/**
+		 * ALL MENU-ITEMS
+		 */
+
+		.menu-item:hover > .sub-menu {
+			opacity: 1;
+			transition: opacity 250ms, visibility 0s linear;
+			visibility: visible;
+		}
+		
+		
+		/**
+		 * ALL SUB-MENU LEVELS
+		 */	
+		
+		.sub-menu {
+			background-color: white;
+			box-shadow: 0 rem(3) rem(3) rgba( black, .12 );
+			display: block;
+			opacity: 0;
+			position: absolute;
+				top: 0;
+				left: rem(-20);
+			transition: opacity 250ms, visibility 0s linear 250ms;
+			width: rem(230);
+			visibility: hidden;				
+		}
+		
+		
+		/**
+		 * SECOND-LEVEL ONLY
+		 */	
+		 
+		> .menu-item > .sub-menu {
+			top: 100%;
+		}
+		
+	}
+	
+	
+}

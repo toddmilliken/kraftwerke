@@ -1,0 +1,40 @@
+{
+  "name": "kraftwerke",
+  "version": "1.0.0",
+  "description": "The base parent/child theme setup for sites built by emagine.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wordpress"
+  ],
+  "author": "emagine",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "browser-sync": "^2.18.2",
+    "child_process": "^1.0.2",
+    "del": "^2.2.2",
+    "fs": "0.0.1-security",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-download": "0.0.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-modernizr": "^1.0.0-alpha",
+    "gulp-newer": "^1.3.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sass-glob": "^1.0.6",
+    "gulp-sass-glob-import": "^0.1.0",
+    "gulp-sass-lint": "^1.1.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4",
+    "node-reset-scss": "^1.0.1",
+    "path": "^0.12.7"
+  }
+}

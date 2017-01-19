@@ -1,0 +1,21 @@
+/* Used to define how wide your main content should be at viewport widths */
+.inner {
+	padding: 0 rem(20);
+	position: relative;
+
+	&--static {
+		position: static;
+	}
+	
+}
+
+
+@include inner-up {
+	
+	.inner {		
+		margin: 0 auto;
+		padding: 0;
+		width: rem($width-center);
+	}
+	
+}

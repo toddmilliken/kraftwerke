@@ -1,0 +1,13 @@
+/* Remove content style from <li> elements  */
+.no-list-style {
+  list-style: none;
+
+  li {
+    margin-top: 0;
+    padding-left: 0;
+
+    &:before {
+      display: none;
+    }
+  }
+}

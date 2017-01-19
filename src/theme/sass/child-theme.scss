@@ -1,0 +1,32 @@
+// Gulp Reset
+@import "reset";
+
+// Utilities - Abstracts
+@import "00-utilities/func/*";
+@import "00-utilities/vars/*";
+@import "00-utilities/mixins/*";
+@import "00-utilities/helper-classes/*";
+@import "00-utilities/plugins/*";
+
+
+// 1) Atoms - Basic building blocks
+@import "01-atoms/*";
+
+// 2) Molecules - Combinations of atoms
+@import "02-molecules/blocks/*";
+@import "02-molecules/layout/*";
+@import "02-molecules/media/*";
+@import "02-molecules/navigation/*";
+@import "02-molecules/text/*";
+
+// 3) Organisms - UI components that create sections of the interface
+@import "03-organisms/*";
+@import "03-organisms/global/*";
+@import "03-organisms/layers/*";
+@import "03-organisms/sections/*";
+
+// 4) Templates - Layouts using atoms, molecules, and organisms
+/*
+@import "04-templates/index/*";
+@import "04-templates/front-page/*";
+*/

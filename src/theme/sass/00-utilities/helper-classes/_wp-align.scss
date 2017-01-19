@@ -1,0 +1,41 @@
+//---
+// WORDPRESS GENERATED CLASSES
+//
+// @ref: https://codex.wordpress.org/CSS
+//---
+.aligncenter {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: rem($margin-bottom);
+
+	img {
+		margin: 0 auto;
+	}
+	
+}
+
+.alignleft,
+.alignright {
+	display: block;
+	margin-bottom: rem($margin-bottom);
+}
+
+
+@include smartphone-up {
+	
+	.alignleft ,
+	.alignright {
+		position: relative;
+		top: 5px;
+	}
+
+	.alignleft {
+		float: left;
+		margin-right: rem(30);
+	}
+
+	.alignright {
+		float: right;
+		margin-left: rem(30);
+	}
+}

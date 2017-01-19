@@ -1,0 +1,54 @@
+.social {
+	margin: 0;
+	padding: 0;
+}  
+
+
+.social__link {
+	color: inherit;
+	font-weight: normal;	
+	text-decoration: none;
+	
+	// brand colors
+	&.fb {
+		color: $facebook;
+	}	
+	
+	&.g {
+		color: $googleplus;			
+	}	
+	
+	&.ig {
+		color: $instagram;			
+	}	
+	
+	&.li {
+		color: $linkedin;			
+	}	
+	
+	&.pt {
+		color: $pinterest;			
+	}	
+	
+	&.tw {
+		color: $twitter;			
+	}	
+	
+	&.rss {
+		color: $rss;			
+	}	
+	
+	&.vm {
+		color: $vimeo;			
+	}	
+	
+	&.yt {
+		color: $youtube;
+	}		
+	
+}
+
+.social__item {
+	display: inline-block;
+	padding-bottom: 0;
+}
