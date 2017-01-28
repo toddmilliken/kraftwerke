@@ -34,6 +34,7 @@ var newer = require('gulp-newer');
 var path = require('path');
 var del = require('del');
 
+
 // --------------------------------
 // Globals
 // --------------------------------
@@ -46,10 +47,12 @@ var src = {
 	acf: {},
 	patternlab: {},
 	theme: {}
+	plugins: {},
 };
 src.theme.root				= src.root + "theme/";
 src.theme.sass 				= src.theme.root + "sass/";
 src.theme.js 				= src.theme.root + "js/";
+src.plugins.root            = src.root + "plugins/";
 src.acf.root 				= src.root + "acf-json/";
 src.patternlab.root			= src.root + "patternlab/";
 src.patternlab.css          = src.patternlab.root + "css/";	
@@ -71,6 +74,7 @@ wp.theme.core 	= wp.theme.root + "core/";
 wp.theme.css 	= wp.theme.core + "css/";
 wp.theme.js  	= wp.theme.core + "js/";
 wp.theme.acf 	= wp.theme.root + "acf-json/";
+wp.plugins      = wp.content + "plugins/";
 
 // Patternlab Paths
 var patternlab = {
@@ -329,7 +333,7 @@ gulp.task('theme:scripts', gulp.series(function() {
  */
 var vendorURLsHead = [
 	// PictureFill
-	'https://raw.githubusercontent.com/scottjehl/picturefill/master/dist/picturefill.js',
+	'https://raw.githubusercontent.com/scottjehl/picturefill/master/dist/picturefill.js'
 ];
 
 var vendorURLsFooter = [
@@ -455,15 +459,27 @@ gulp.task("theme:init", gulp.series(function() {
 	});
 }));
 
+
+/**
+ * WP Plugin Copy Task: Intended to copy over *.php files from /src/ to /site/
+ */
+gulp.task("wp-plugins:copy", gulp.series(function() {
+	return gulp.src(src.plugins.root + '**/*', { dot: true })
+		.pipe(plumber(plumberErrorHandler))
+		.pipe(gulp.dest(wp.plugins));
+}));
+
 gulp.task("theme:build", gulp.series([
 	'acf:update-src',
 	'theme:clean',
 	'theme:sass',
 	'theme:scripts',
+	'theme:svg-sass-partial',
 	'theme:distribute-vendor-head',
 	'theme:distribute-vendor-footer',
 	'theme:copy',
-	'acf:get-src'
+	'acf:get-src',
+	'wp-plugins:copy'
 ]));
 
 
@@ -488,11 +504,12 @@ gulp.task('patternlab:init', gulp.series(function() {
 /**
  * Copy patternlab files to patternlab/source
  */
-gulp.task('patternlab:copy', function(done) {
-    return gulp.src([src.patternlab.root + '**/*', '!' + src.patternlab.root + '**/__*'])
-        .pipe(newer(patternlab.source.root))
-        .pipe(gulp.dest(patternlab.source.root));
-});
+gulp.task('patternlab:copy', gulp.series(function() {
+	return gulp.src([src.patternlab.root + '**/*', '!' + src.patternlab.root + '**/__*'])
+		.pipe(plumber(plumberErrorHandler))
+		.pipe(newer(patternlab.source.root))
+		.pipe(gulp.dest(patternlab.source.root));
+}));
 
 /**
  * Serves up Patternlab using the gulp tasks within /patternlab
@@ -520,7 +537,7 @@ gulp.task('site:serve', gulp.series(function() {
 	browserSync.init({
 		proxy: "kraftwerke.dev", // Rename this to your desired domain name
 		port: 3333
-	});
+    });
 }));
 
 
@@ -531,6 +548,9 @@ gulp.task('site:serve', gulp.series(function() {
 gulp.task('watch', gulp.series(function() {
 	// Theme Watcher
 	gulp.watch(themeFiles, gulp.series(['theme:copy']));
+	
+	// Plugins Watcher
+	gulp.watch(src.plugins.root + '**/*', gulp.series(['wp-plugins:copy']));
 
 	// Sass Watcher
 	gulp.watch(src.theme.sass + '**/*.scss', gulp.series(['theme:sass']));
@@ -542,19 +562,13 @@ gulp.task('watch', gulp.series(function() {
 	var watcher = gulp.watch(src.patternlab.root + '**/*', gulp.series(['patternlab:copy']));
 	watcher.on('change', function(ev) {
 		if(ev.type === 'deleted') {
-			// path.relative gives us a string where we can easily switch
-			// directories
+			// path.relative gives us a string where we can easily switch directories
 			del(path.relative('./', ev.path).replace(src.patternlab.root.substr(2),patternlab.source.root.substr(2)));
-			//src.patternlab.root.substr(2)
-			//patternlab.source.root.substr(2)
 		}
 	});
-	//gulp.watch(src.patternlab.root + '**/*', gulp.series(['patternlab:copy']));
-
+	
 	// ACF Watchers
 	gulp.watch(wp.theme.acf + '**/*', gulp.series(['acf:update-src']));
-	
-	
 }));
 
 
