@@ -1,10 +1,8 @@
 //---
 // DEFAULT FORM ELEMENTS
 //---
-
-
-// all labels
 label {
+	color: $label-color;
 	display: block;
 	font-family: $primary-face;
 	font-weight: 600;
@@ -12,20 +10,203 @@ label {
 	vertical-align: middle;
 }
 
+input ,
+select ,
+textarea {
+	background: $input-background;
+	color: $input-color;
+	font-size: $input-font-size;
+}
 
-// all buttons
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+input:not([type="checkbox"]):not([type="radio"]) ,
+textarea {
+	border: $input-border;
+	border-radius: $input-border-radius;
+	padding: $input-padding;
+	margin: 0;
+	vertical-align: middle;
+	
+	&::placeholder {
+		color: $placeholder-color;
+	}	
+	
+}
+
+//! NORMALIZE AND IE FIX
+[type="radio"] ,
+[type="checkbox"] {
+	border: #fff; // for ie. must match page background color
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+	width: 20px;
+}
+
+[type="file"] {
+	border: none;
+	padding: 0;
+}
+
 [type="submit"] ,
 [type="button"] ,
 button {
-	-webkit-border-radius: 0; // removes default webkit border-radius
+	-webkit-appearance: none;
+	-webkit-border-radius: 0; 
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
 	cursor: pointer;
+	display: inline-block;
+	font-size: rem(16);
 	outline: none;
 }
 
 
-// all inputs but radio/checkbox
-input {
-	&:not([type="checkbox"]):not([type="radio"]) {
-		border-radius: 0;
+//---
+// SELECTOR - .selector wrapper added dynamically via javascript
+//---
+select {
+	border-radius: 0;
+
+	&[multiple="multiple"] {
+		border: $input-border;
+		padding: $input-padding;
+		margin: 0;
 	}
+
+}
+
+//! IE FIX
+select::-ms-expand {
+	display: none;
+}
+
+.selector {
+	background: $input-background;
+	border: $input-border;
+	border-radius: $input-border-radius;
+	color: $input-color;
+	overflow: hidden;
+	padding-right: rem( 38 + 20 );
+	position: relative;
+	vertical-align: middle;
+
+	&:after {
+		background-color: #86939e;
+		color: white;
+		content: $fa-angle-down;
+		font-family: $font-awesome;
+		font-size: rem(24);
+		line-height: rem(38);
+		pointer-events: none;
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 0;
+		text-align: center;
+		width: rem(38);
+	}
+
+	select {
+		-webkit-appearance: none;
+		background: none;
+		background-image: none;
+		border: none;
+		box-shadow: none;
+		padding: $input-padding;
+		padding-right: calc(30% + 20px);
+		position: relative;
+		width: 130%;
+
+		&:focus {
+			border: none;
+			outline: none;
+		}
+
+	}
+}
+
+
+//---
+// UNIFORM UPLOADER
+//---
+
+// wrapper via javascript
+.uploader {
+	background-image: none;
+	background: $input-background;
+	border: $input-border;
+	display: -moz-inline-box;
+	cursor: pointer;
+	display: inline-block;
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+	vertical-align: middle;
+	width: 49%;
+	zoom: 1;
+
+	// input (opacity: 0 to hide. should lay on top of the uniform fields)
+	input {
+		background: none;
+		border: none;
+		cursor: pointer;
+		height: 100%;
+		-moz-opacity: 0;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 2;
+		width: 100% !important;
+	}
+
+	.filename {
+		color: $input-color;
+		cursor: default;
+		display: block;
+		float: left;
+		height: 40px;
+		line-height: 1.25;
+		overflow: hidden;
+		padding: $input-padding;
+		padding-right: rem(124);
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 100%;
+	}
+
+	// upload button
+	.action {
+		@extend %btn;
+		background-color: #86939e;
+		border: none;
+		border-left: $input-border;
+		font-size: rem(12);
+		line-height: 2;
+		padding: rem(8) rem(16);
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		
+		&:after {
+			display: none;
+		}
+		
+	}
+
+	.action:hover {
+		background: #666;
+	}
+
 }
