@@ -46,8 +46,8 @@ var src = {
 	root: "./src/",
 	acf: {},
 	patternlab: {},
-	theme: {}
-	plugins: {},
+	theme: {},
+	plugins: {}
 };
 src.theme.root				= src.root + "theme/";
 src.theme.sass 				= src.theme.root + "sass/";
@@ -474,7 +474,6 @@ gulp.task("theme:build", gulp.series([
 	'theme:clean',
 	'theme:sass',
 	'theme:scripts',
-	'theme:svg-sass-partial',
 	'theme:distribute-vendor-head',
 	'theme:distribute-vendor-footer',
 	'theme:copy',
