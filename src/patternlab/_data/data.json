@@ -6,27 +6,39 @@
 	],
 	"neutral-colors": [
 		{
+			"name" : "gray-light"
+		},
+		{
 			"name" : "gray"
 		},
 		{
-			"name" : "gray-light"
+			"name" : "gray-dark"
 		}
 	],
 	"utility-colors": [
 		{
-			"name" : "royal-blue"
+			"name" : "green-light"
 		},
 		{
-			"name" : "lime-green"
+			"name" : "green-dark"
 		},
 		{
-			"name" : "sun-orange"
-		},
-		{
-			"name" : "carmine-pink"
+			"name" : "red-light"
 		},
 		{
 			"name" : "red"
+		},
+		{
+			"name" : "red-dark"
+		},
+		{
+			"name" : "blue-light"
+		},
+		{
+			"name" : "blue"
+		},
+		{
+			"name" : "blue-dark"
 		}
 		
 	],
