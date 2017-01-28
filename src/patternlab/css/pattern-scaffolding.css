@@ -203,5 +203,9 @@
 }
 
 .primary-face {
-  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.secondary-face {
+  font-family: "Porscha Condensed", Helvetica, Arial, sans-serif;
 }
