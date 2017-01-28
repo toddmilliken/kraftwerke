@@ -1,7 +1,7 @@
 ul,
 ol {
 	margin: 0 0 rem($margin-bottom);
-    padding: 0;
+	padding: 0 0 0 rem(20);
 	
 	// prevents compounded padding in nested lists
 	ul ,
@@ -20,7 +20,8 @@ li {
 	position: relative;	
 	
 
-	&:before {
+	&:before {		
+		color: $primary-color;
 		position: absolute;
 		font-weight: 700;
 	}
@@ -51,6 +52,8 @@ ol {
 ol li:before {
 	content: counter(item) ".";
 	counter-increment: item;
+	font-size: 85%;
+	top: rem(3);
 	left: rem(7);
 }
 

@@ -1,3 +1,4 @@
+// Generic Button Link Style
 %btn {
 	background-color: $primary-color;
 	color: white;
@@ -34,6 +35,41 @@
 		}
 	}
 
+}
+
+
+
+// Generic More Link Style
+%more {
+	border-bottom: 1px solid $primary-color;
+	color: $primary-color;
+	font-family: $primary-face;
+	font-size: 85%;
+	font-weight: 700;
+	letter-spacing: 2px;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	&:before {
+		background-color: $primary-color;
+		content: "";
+		height: 2px;
+		position: absolute;
+			bottom: -1px;
+			left: 0;
+		transition: width 250ms ease-out 0ms;
+		width: 0;
+	}
+
+	&:hover:before {
+		width: 100%;			
+	}
+	
+}
+
+.more {
+	@extend %more;
 }
 
 .more {

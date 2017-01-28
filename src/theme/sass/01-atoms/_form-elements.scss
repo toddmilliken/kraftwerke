@@ -97,7 +97,7 @@ select::-ms-expand {
 	vertical-align: middle;
 
 	&:after {
-		background-color: #86939e;
+		background-color: $primary-color;
 		color: white;
 		content: $fa-angle-down;
 		font-family: $font-awesome;
@@ -188,7 +188,7 @@ select::-ms-expand {
 	// upload button
 	.action {
 		@extend %btn;
-		background-color: #86939e;
+		background-color: $primary-color;
 		border: none;
 		border-left: $input-border;
 		font-size: rem(12);
@@ -209,4 +209,31 @@ select::-ms-expand {
 		background: #666;
 	}
 
+}
+
+
+// search field
+.search-field {
+	position: relative;
+	
+	.search-input {
+		width: 100%;
+	}
+	
+	.search-button {
+		@extend %btn;
+		font-size: rem(12);
+		line-height: 2;
+		padding: rem(9) rem(16);
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			
+			i {
+				margin-left: 4px;
+			}
+			
+	}
+	
 }

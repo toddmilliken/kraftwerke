@@ -3,30 +3,31 @@
 //---
 // THEME COLORS
 //---
+$theme-color-variance: 12%;
+
 $theme-colors: (
-  "sky-blue": (
-    "base": #3aa5d6
+  "green": (
+    "base": #42ab9e , // from awwwards.com
+    "light": lighten( #42ab9e, $theme-color-variance ) ,
+    "dark": darken( #42ab9e, $theme-color-variance ) ,
+  ),
+  "red": (
+    "base": #b03049 , // from awwwards.com
+    "light": lighten( #b03049, $theme-color-variance ) ,
+    "dark": darken( #b03049, $theme-color-variance )
+  ),
+  "blue": (
+    "base": #325595 , // from awwwards.com
+    "light": lighten( #325595, $theme-color-variance ) ,
+    "dark": darken( #325595, $theme-color-variance )
   ),
   "gray": (
-    "base": #6d727c
+	  "base": #707070 , // from awwwards.com
+    "light": #bdc1c0 ,
+    "dark": #202121	  
   ),
-  "royal-blue": (
-    "base": #203b6b
-  ),
-  "meadow-green": (
-    "base": #30b89a
-  ),
-  "lime-green": (
-    "base": #b8d248
-  ),
-  "sun-orange": (
-    "base": #f69331
-  ),
-  "carmine-pink": (
-    "base": #e54d42
-  ),
-  "red-violet": (
-    "base": #b9247f
+  "off-white": (
+  	"base": #f2f2f2 
   )
 );
 
@@ -34,7 +35,7 @@ $theme-colors: (
 //---
 // COMMON COLORS 
 //---
-$primary-color: theme-color("sky-blue");
+$primary-color: theme-color("green");
 $body-color: theme-color("gray");
 
 //---

@@ -7,7 +7,6 @@
 	.three-column ,
 	.four-column {
 		column-gap: rem(30);
-		padding-left: 0;
 	
 		li {
 			break-inside: avoid;
