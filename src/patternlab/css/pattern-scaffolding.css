@@ -106,18 +106,6 @@
   padding-top: 1.5rem;
 }
 
-.swatch--sky-blue {
-  background-color: #3aa5d6;
-}
-
-.swatch--sky-blue:before {
-  content: "sky-blue";
-}
-
-.swatch--sky-blue:after {
-  content: "#3aa5d6";
-}
-
 .swatch--gray {
   background-color: #6d727c;
 }
@@ -130,8 +118,20 @@
   content: "#6d727c";
 }
 
+.swatch--gray-light {
+  background-color: #f4f7f6;
+}
+
+.swatch--gray-light:before {
+  content: "gray - light";
+}
+
+.swatch--gray-light:after {
+  content: "#f4f7f6";
+}
+
 .swatch--royal-blue {
-  background-color: #203b6b;
+  background-color: #325595;
 }
 
 .swatch--royal-blue:before {
@@ -139,19 +139,19 @@
 }
 
 .swatch--royal-blue:after {
-  content: "#203b6b";
+  content: "#325595";
 }
 
-.swatch--meadow-green {
-  background-color: #30b89a;
+.swatch--green {
+  background-color: #42ab9e;
 }
 
-.swatch--meadow-green:before {
-  content: "meadow-green";
+.swatch--green:before {
+  content: "green";
 }
 
-.swatch--meadow-green:after {
-  content: "#30b89a";
+.swatch--green:after {
+  content: "#42ab9e";
 }
 
 .swatch--lime-green {
@@ -190,16 +190,16 @@
   content: "#e54d42";
 }
 
-.swatch--red-violet {
-  background-color: #b9247f;
+.swatch--red {
+  background-color: #b03049;
 }
 
-.swatch--red-violet:before {
-  content: "red-violet";
+.swatch--red:before {
+  content: "red";
 }
 
-.swatch--red-violet:after {
-  content: "#b9247f";
+.swatch--red:after {
+  content: "#b03049";
 }
 
 .primary-face {

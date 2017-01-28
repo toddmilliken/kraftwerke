@@ -1,15 +1,15 @@
 {
 	"brand-colors": [
 		{
-			"name" : "sky-blue"
-		},
-		{
-			"name" : "meadow-green"
+			"name" : "green"
 		}
 	],
 	"neutral-colors": [
 		{
 			"name" : "gray"
+		},
+		{
+			"name" : "gray-light"
 		}
 	],
 	"utility-colors": [
@@ -26,7 +26,7 @@
 			"name" : "carmine-pink"
 		},
 		{
-			"name" : "red-violet"
+			"name" : "red"
 		}
 		
 	],
