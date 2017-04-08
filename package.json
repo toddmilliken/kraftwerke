@@ -33,6 +33,7 @@
     "gulp-sass-glob-import": "^0.1.0",
     "gulp-sass-lint": "^1.1.1",
     "gulp-uglify": "^2.0.0",
+    "gulp-wp-pot": "^2.0.4",
     "jshint": "^2.9.4",
     "node-reset-scss": "^1.0.1",
     "path": "^0.12.7"

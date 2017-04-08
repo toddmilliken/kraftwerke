@@ -1,0 +1,125 @@
+//---
+// SHARED STYLES ON MOBILE + DESKTOP
+//---
+.main-menu {
+	color: theme-color("gray", "dark");
+	font-size: rem(18);
+	letter-spacing: .05em;
+	
+	a {
+		transition-delay: 0s;
+		transition-duration: 250ms;
+		transition-property: background-color, color;
+		transition-timing-function: ease;
+	}
+		
+	.toggle-control {
+		color: inherit;
+		cursor: pointer;
+	    height: rem(74);
+	    position: absolute;
+		    top: 0;
+		    right: 0;
+		    z-index: 2;
+	    width: rem(74);
+	    
+	    &:after {
+		    color: rgba(black, .5);
+		    content: $fa-angle-down;
+		    font-family: $font-awesome;
+		    font-size: rem(26);
+		    position: absolute;
+		    	top: 50%;
+		    	left: 50%;
+		    transform: translate(-50%, -50%);
+		    transition: transform 250ms ease 0s, color 250ms ease 0s;
+	    }
+	    
+	    &--active:after {
+		    transform: translate(-50%, -50%) rotate(180deg);
+	    }
+	    
+	}
+	
+	[class*="current"] > .sub-menu {
+		display: block;
+	}
+
+	> [class*="current"] > a {
+		background-color: $primary-color;
+		color: theme-color("gray", "lightest");
+	}
+		
+	
+	// first-level
+	> .menu-item {
+
+		&:first-child > a {
+			border-top: 1px solid rgba(black, .1);
+		}
+		
+		> a {
+			border-collapse: collapse;
+			border-bottom: 1px solid rgba(black, .05);
+			font-weight: 700;
+			padding: rem(24) rem(20);
+		}
+	
+		&[class*="current"] > a ,
+		&[class*="current"] > a:hover {
+			background-color: $primary-color;
+			color: white;
+			
+			+ .toggle-control {
+				color: white;
+			}
+			
+		}
+	
+		> .sub-menu {
+			border-bottom: 1px solid rgba(black, .1);
+		}
+	
+/*
+		> .toggle-control {
+			border-collapse: collapse;
+			border-left: 1px solid rgba(black, .1);
+		}
+*/
+
+	}
+	
+	// all submenus
+	.sub-menu {
+		background-color: theme-color("gray", "lightest");
+		display: none;
+		font-size: rem(16);
+		text-transform: none;
+		
+		> .menu-item {
+			padding: 0;
+			
+			&:first-child {
+				padding-top: rem(12);
+			}
+			
+			&:last-child {
+				padding-bottom: rem(12);
+			}
+			
+		}
+		
+		a {
+			font-weight: 400;
+			padding: rem(16) rem(20);
+		}
+		
+		// 3rd level and beyond 
+		.sub-menu {
+			background-color: #d6dade;
+			box-shadow: inset 0 0 3px rgba(black, .3);
+		}
+		
+	}
+	
+}

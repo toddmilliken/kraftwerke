@@ -1,0 +1,27 @@
+.search-form {
+	
+	//sass-lint:disable no-qualifying-elements
+	input.search-input {
+		display: block;
+		padding-right: rem(50);
+		width: 100%;
+	}
+	//sass-lint:enable no-qualifying-elements
+	
+}
+
+.search-inner {
+	position: relative;
+	
+	.search-button {
+		background: $primary-color;
+		color: white;
+		display: block;
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		width: rem(40);
+	}
+	
+}

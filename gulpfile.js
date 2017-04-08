@@ -5,6 +5,9 @@
 // Gulp - Duh
 var gulp = require('gulp');
 
+// Translation Related
+var wpPot = require('gulp-wp-pot');
+
 // CSS Related
 var sass = require('gulp-sass');
 var sassGlob = require('gulp-sass-glob');
@@ -49,32 +52,36 @@ var src = {
 	theme: {},
 	plugins: {}
 };
-src.theme.root				= src.root + "theme/";
-src.theme.sass 				= src.theme.root + "sass/";
-src.theme.js 				= src.theme.root + "js/";
+src.theme.root              = src.root + "theme/";
+src.theme.languages         = src.theme.root + "languages/";
+src.theme.core              = src.theme.root + "core/";
+src.theme.sass              = src.theme.core + "sass/";
+src.theme.js                = src.theme.core + "js/";
 src.plugins.root            = src.root + "plugins/";
-src.acf.root 				= src.root + "acf-json/";
-src.patternlab.root			= src.root + "patternlab/";
+src.acf.root                = src.root + "acf-json/";
+src.patternlab.root         = src.root + "patternlab/";
 src.patternlab.css          = src.patternlab.root + "css/";	
 src.patternlab.js           = src.patternlab.root + "js/";	
 src.patternlab.annotations 	= src.patternlab.root + "_annotations/";
-src.patternlab.data 		= src.patternlab.root + "_data/";
-src.patternlab.meta			= src.patternlab.root + "_meta/";
-src.patternlab.patterns 	= src.patternlab.root + "_patterns/";
+src.patternlab.data         = src.patternlab.root + "_data/";
+src.patternlab.meta         = src.patternlab.root + "_meta/";
+src.patternlab.patterns 	  = src.patternlab.root + "_patterns/";
 
 // WordPress Paths
 var wp = {
 	root: "./site/",
 	theme: {}
 };
-wp.content 		= wp.root + "wp-content/";
-wp.themes 		= wp.content + "themes/";
-wp.theme.root 	= wp.themes + packagejson.name + "/";
-wp.theme.core 	= wp.theme.root + "core/";
-wp.theme.css 	= wp.theme.core + "css/";
-wp.theme.js  	= wp.theme.core + "js/";
-wp.theme.acf 	= wp.theme.root + "acf-json/";
-wp.plugins      = wp.content + "plugins/";
+wp.content 	   	   	   	   	= wp.root + "wp-content/";
+wp.themes 	   	   	   	   	= wp.content + "themes/";
+wp.theme.root 	   	   	   	= wp.themes + packagejson.name + "/";
+wp.theme.core 	   	   	   	= wp.theme.root + "core/";
+wp.theme.css 	   	   	   	  = wp.theme.core + "css/";
+//wp.theme.icons 	   	   	   	= wp.theme.core + "icons/";
+//wp.theme.images 	   	   	  = wp.theme.core + "images/";
+wp.theme.js 	   	   	   	  = wp.theme.core + "js/";
+wp.theme.acf 	   	   	   	  = wp.theme.root + "acf-json/";
+wp.plugins 	   	   	   	   	= wp.content + "plugins/";
 
 // Patternlab Paths
 var patternlab = {
@@ -99,8 +106,8 @@ patternlab.source.patterns 		= patternlab.source.root + "_patterns/";
  */
 var themeFiles = [
 	src.theme.root + '**/*',
-	'!' + src.theme.root + 'sass{,/**}',
-	'!' + src.theme.root + 'js{,/**}'
+	'!' + src.theme.root + 'core/sass{,/**}',
+	'!' + src.theme.root + 'core/js{,/**}'
 ];
 
 
@@ -135,6 +142,16 @@ gulp.task("theme:clean", gulp.series(function() {
 		], {read: false})
 		.pipe(clean());
 }));
+
+ 
+gulp.task('theme:generate-pot-files', function () {
+    return gulp.src(src.theme.root + '**/*.php')
+        .pipe(wpPot( {
+            domain: 'kraftwerke',
+            package: 'Kraftwerke'
+        } ))
+        .pipe(gulp.dest(src.theme.languages + 'file.pot'));
+});
 
 /**
  * Sass Tasks
@@ -312,7 +329,7 @@ gulp.task("theme:clean", gulp.series(function() {
  */
 gulp.task('theme:scripts', gulp.series(function() {
 	return gulp.src([
-			src.theme.js + '**/*.js',
+			src.theme.js + 'theme/**/*.js',
 			'!' + src.theme.js + 'vendor-footer/**/*',
 			'!' + src.theme.js + 'vendor-head/**/*'
 		], { dot: true })
@@ -323,6 +340,20 @@ gulp.task('theme:scripts', gulp.series(function() {
 		.pipe(gulp.dest(wp.theme.js))
 		// Distribute to Pattern Lab
 		.pipe(gulp.dest(src.patternlab.js));
+}));
+
+gulp.task('theme:single-scripts', gulp.series(function() {
+	return gulp.src([
+			src.theme.js + '*.js',
+			'!' + src.theme.js + 'theme/**/*',
+			'!' + src.theme.js + 'vendor-footer/**/*',
+			'!' + src.theme.js + 'vendor-head/**/*'
+		], { dot: true })
+		.pipe(jshint())
+	    .pipe(jshint.reporter('default'))
+	    // Distribute to site
+	    .pipe(gulp.dest(wp.theme.js))
+ 		.pipe(gulp.dest(src.patternlab.js));
 }));
 
 
@@ -474,8 +505,10 @@ gulp.task("theme:build", gulp.series([
 	'theme:clean',
 	'theme:sass',
 	'theme:scripts',
+	'theme:single-scripts',
 	'theme:distribute-vendor-head',
 	'theme:distribute-vendor-footer',
+	'theme:generate-pot-files',
 	'theme:copy',
 	'acf:get-src',
 	'wp-plugins:copy'
@@ -555,7 +588,10 @@ gulp.task('watch', gulp.series(function() {
 	gulp.watch(src.theme.sass + '**/*.scss', gulp.series(['theme:sass']));
 
 	// Scripts Watcher
-	gulp.watch(src.theme.js + '**/*.js', gulp.series(['theme:scripts']));
+	gulp.watch(src.theme.js + '**/*.js', gulp.series(['theme:scripts', 'theme:single-scripts']));
+	
+	// Languages Watcher
+	gulp.watch(src.theme.languages + '**/*.php', gulp.series(['theme:generate-pot-files']));
 
 	// Patternlab Watchers
 	var watcher = gulp.watch(src.patternlab.root + '**/*', gulp.series(['patternlab:copy']));

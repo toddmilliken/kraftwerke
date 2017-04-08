@@ -6,6 +6,9 @@
 	],
 	"neutral-colors": [
 		{
+			"name" : "gray-lighter"
+		},
+		{
 			"name" : "gray-light"
 		},
 		{
@@ -77,5 +80,6 @@
 		"class" : "more" ,
 		"text" : "Learn More" 
 	},
-	"year" : "2017"
+	"year" : "2017",
+	"searchText" : "Search"
 }

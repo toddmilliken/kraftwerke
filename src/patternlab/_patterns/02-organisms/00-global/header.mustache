@@ -1,12 +1,22 @@
-<header id="js-site-header" class="site-header" role="banner">
+<header id="js-site-header" class="site-header {{ styleModifier }}" role="banner">
 
-	{{> molecules-logo-link }}
-
-	{{> molecules-navicon }}
-
-	<nav class="site-navigation">
-		{{> molecules-menu-utility-menu }}
-		{{> molecules-menu-main-menu }}
-	</nav>
-
+	<div class="site-header__left">			
+		<button id="js-navicon" class="navicon no-button-style" href="javascript:;">
+			<div class="navicon__trigger"></div>
+			<div class="navicon__text" data-menu="Menu" data-close="Close">Menu</div>
+		</button>
+	</div>
+	<div class="site-header__right">
+		<div id="js-site-search" class="site-header__search-btn">
+			<i class="fa fa-search" aria-hidden="true"></i>
+		</div>
+		<div class="site-header__callouts">
+			<div class="header-phone"><strong>Phone</strong>: 888.888.8888</div>
+			<a href="#" class="header-cta-btn">Schedule Service <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>	
+		</div>
+	</div>
+	<a href="#" class="custom-logo-link">
+		<div class="logo-text" href="http://staging.kraftwerke1.com">Kraftwerke<sup>&reg;</sup></div>
+	</a>
+	{{> organisms-site-search}}
 </header>

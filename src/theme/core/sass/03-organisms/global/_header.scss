@@ -1,0 +1,133 @@
+.site-header {
+	background-color: theme-color("gray", "lighter");
+	border-bottom: 1px solid $border-color;
+	color: theme-color("gray", "dark");
+	display: flex;
+	font-size: rem(13);
+	height: rem($siteheader-height);
+	letter-spacing: .03em;
+	position: relative;	
+		z-index: 10;
+		
+	&:before {
+		background-color: theme-color("gray", "lighter");
+		content: "";
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+	}
+	
+	&--fixed {
+		position: fixed;
+			top: 0;
+			left: 0	;
+		width: 100%;
+	}
+		
+	&__left ,
+	&__right ,
+	.custom-logo-link {
+		position: relative;
+			z-index: 1;
+	}
+	
+	&__left {
+		border-right: 1px solid #dadada;
+	}
+	
+	&__right {
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+	}
+	
+	&__search-btn {
+		align-items: center;
+		cursor: pointer;
+		display: flex;
+		font-size: rem(18);
+		padding: 0 rem(24);
+	}
+	
+	&__callouts {
+		display: flex;
+		height: 100%;
+	}
+	
+	
+	.custom-logo-link {
+		position: absolute;
+			top: 50%;
+			left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	
+}
+
+.header-phone ,
+.header-cta-btn {
+	align-items: center; 
+	display: flex;
+	height: 100%;
+}
+
+.header-phone {
+	font-weight: 400;
+	padding: 0 rem(30);
+}
+
+.header-cta-btn {
+	background-color: $primary-color;
+	color: white;
+	flex-direction: row;
+	font-weight: 700;
+	justify-content: center;
+	padding: 0 rem(30);
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background-color 250ms ease 0s;
+	
+	&:hover {
+		background-color: darken($primary-color, 10%);
+	}
+	
+	i {
+		margin-left: rem(14);
+	}
+	
+}
+
+
+
+@media screen and (max-width: #{em(1200)}) {
+	
+	.header-phone {
+		display: none;	
+	}
+}
+
+
+
+
+@include tablet-portrait-down {
+	
+	.site-header {
+	
+		&__left {
+			border-right: none;
+		}
+		
+		&__right {
+			justify-content: flex-end;
+		}
+	
+		&__callouts {
+			display: none;
+		}
+		
+	}
+	
+}

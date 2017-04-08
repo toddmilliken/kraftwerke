@@ -1,0 +1,97 @@
+.html--menu-open {
+	
+	.outer-wrapper ,
+	.site-header {
+		left: rem($site-navigation-width);
+	}
+	
+	.site-wrapper:after {
+		background-color: rgba(black, .75);
+		opacity: 1;		
+		transition: background-color 250ms ease 0s, opacity 250ms ease 0s, visibility 0s linear 0s;
+		visibility: visible;
+	}
+	
+}
+
+
+// Outer-wrapper
+//
+// This wraps the entire contents of body
+.outer-wrapper {
+	position: relative;
+	transition: left 300ms ease 0s;
+	left: 0;
+}
+
+.site-header {
+	transition: left 300ms ease 0s;
+	left: 0;
+}
+
+
+
+// Site-wrapper
+//
+// Wraps just the header/main/footer. 
+// The bulk of the document
+.site-wrapper {
+	// sass-lint:disable no-misspelled-properties
+	-webkit-overflow-scrolling: touch; /* lets it scroll lazy */
+	// sass-lint:enable no-misspelled-properties
+	background-color: theme-color("gray", "lighter");
+	min-height: 100vh;
+	position: relative;
+		z-index: 1;
+	
+	&:after {
+		background-color: rgba(black, 0);
+		content: "";
+		opacity: 0;
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 105;
+		transition: background-color 250ms ease 0s, opacity 250ms ease 0s, visibility 0s linear 250ms;
+		visibility: hidden;
+	}
+	
+}
+
+
+.site-navigation {
+	max-width: 100%;
+	overflow: auto;
+	padding-top: rem($siteheader-height);
+	position: relative;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		transition: left 250ms ease 0s;
+	width: rem($site-navigation-width);
+	
+	&--fixed {
+		position: fixed;
+	}
+	
+	&__close-btn {
+		cursor: pointer;
+		font-size: rem(13);
+		padding: rem(12);
+		position: absolute;
+			top: rem(16);
+			right: rem(8);
+		text-transform: uppercase;
+		
+		i {
+			font-size: rem(18);
+			margin-left: rem(6);
+			position: relative;
+				top: 1px;
+		}
+		
+	}
+	
+}

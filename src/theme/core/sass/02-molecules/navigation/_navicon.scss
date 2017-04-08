@@ -1,0 +1,83 @@
+//--- 
+// BEGIN EM-BASE STYLES
+//---
+.navicon {
+	align-items: center;
+  display: flex;
+  font-size: inherit;
+  height: 100%;
+  
+  &__text {
+	  display: block;
+	  padding-right: rem(30);
+	  text-transform: uppercase;
+  }
+
+  &__trigger {
+    background: #333333;
+    display: block;
+    height: rem(3);
+    margin: rem(20);
+    position: relative;
+    transition: background 0s .3s;
+    width: rem(22);
+
+    &::before,
+    &::after {
+      background: inherit;
+      content: "";
+      height: rem(3);
+      position: absolute;
+        left: 0;
+      transition-delay: .3s, 0s;
+      transition-duration: .3s, .3s;
+    }
+
+    &::before {
+      top: rem(-7);
+      transition-property: top, transform;
+      width: rem(15);
+    }
+
+    &::after {
+      bottom: rem(-7);
+      transition-property: bottom, transform;
+      width: rem(19);
+    }
+
+/*
+    &--open {
+      background: none;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+      }
+
+      &::before,
+      &::after {
+        background: #666666;
+        transition-delay: 0s, .3s;
+      }
+    }
+*/
+  }
+}
+
+
+@media screen and (max-width: #{em(600)}) {
+	
+	.navicon {
+		
+		&__text {
+			display: none;
+		}
+		
+	}
+	
+}

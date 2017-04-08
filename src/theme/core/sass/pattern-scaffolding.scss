@@ -1,0 +1,185 @@
+/**
+ * This stylesheet is for styles you want to include only when displaying demo
+ * styles for grids, animations, color swatches, etc.
+ * These styles will not be your production CSS.
+ */
+
+//---
+// BASE PATTERNLAB STYLES
+//---
+#sg-patterns {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+  max-width: 100%;
+  padding: 0 .5em;
+}
+
+.demo-animate {
+  background: #ddd;
+  padding: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sg-colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.sg-colors li {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  padding: .3em;
+  margin: 0 .5em .5em 0;
+  min-width: 5em;
+  max-width: 14em;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.sg-swatch {
+  display: block;
+  height: 4em;
+  margin-bottom: .3em;
+  border-radius: 5px;
+}
+
+.sg-label {
+  font-size: 90%;
+  line-height: 1;
+}
+
+.sg-tabs-list li {
+	padding: 0;
+	
+	&:before {
+		display: none;
+	}
+	
+}
+
+ 
+ 
+//--- 
+// Utilities - Abstracts
+//---
+@import "00-utilities/func/*";
+@import "00-utilities/vars/*";
+@import "00-utilities/mixins/*";
+
+
+
+//---
+// SWATCHES (FOR STYLEGUIDE)
+//---
+.swatches {
+	display: flex;
+}
+
+
+.swatch {
+	border: 1px solid #cecece;
+	display: block;
+	height: 170px;
+	position: relative;
+	width: calc(20% - 1rem);
+	
+	&:before , 
+	&:after {
+		content: "";
+		display: block;
+		font-family: inherit;
+		font-size: 85%;
+		overflow: hidden;
+		position: absolute;
+			top: auto;
+			bottom: 0;
+			left: 0;
+		padding: .5rem;
+		text-overflow: ellipsis;
+		text-transform: uppercase;
+		width: 100%;
+		word-wrap: nowrap;
+	}
+	
+	&:before {
+		background-color: white;
+		border-top: 1px solid #cecece;
+		color: inherit;
+		font-weight: bold;
+		height: 30%;
+	}
+	
+	&:after {
+		color: gray;
+		font-size: 70%;
+		padding-top: 1.5rem;
+	}
+
+}
+
+
+// Creates a .swatch--$color-key class for all theme-colors using the base-value. 
+// Example: .swatch--blue
+@each $color-key, $color-value in $theme-colors {
+	$base-color-value: map-get($color-value, "base");
+	
+	
+	
+	.swatch--#{$color-key} {
+		background-color: $base-color-value;
+		
+		&:before { 
+			content: "#{$color-key}"; 
+		}
+	
+		&:after { 
+			content: "#{$base-color-value}"; 
+		}
+		
+		// Variants
+		// Creates a .swatch--$color-key-$variant-key class
+		// Example: .swatch--blue-light, .swatch--blue-dark, etc. 
+		@each $variant-key, $variant-value in $color-value {
+			
+			@if $variant-key != "base" {
+			
+				&-#{$variant-key} {
+					background-color: $variant-value;
+					
+					&:before {
+						content: "#{$color-key} - #{$variant-key}";
+					}
+					
+					&:after {
+						content: "#{$variant-value}";
+					}
+					
+				}
+			}
+			
+		}
+	
+	}
+	
+}
+
+
+//---
+// FONTS
+//---
+.primary-face {
+	font-family: $primary-face;	
+}
+
+.secondary-face {
+	font-family: $secondary-face;	
+}
