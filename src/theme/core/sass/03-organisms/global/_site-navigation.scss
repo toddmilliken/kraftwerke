@@ -94,4 +94,20 @@
 		
 	}
 	
+	// social
+	.social {
+		position: absolute;
+			top: rem(22);
+			left: rem(20);
+			
+		&__title {
+			display: none;
+		}
+		
+		.fa-circle {
+			color: white;
+		}
+		
+	}
+	
 }

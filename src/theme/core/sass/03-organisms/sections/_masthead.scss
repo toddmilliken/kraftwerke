@@ -10,10 +10,6 @@
 		color: inherit;
 	}
 	
-	.page-title {
-		margin-bottom: rem(6);
-	}
-	
 	// IE Fix so we can add a min-height to flex-child
 	// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
 	&__flex-parent {

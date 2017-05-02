@@ -25,6 +25,7 @@ h6 {
 h1 {
 	font-size: rem(32);
 	/* 2x body copy size = 32px */
+	font-weight: 400;
 	line-height: 1.25;
 	/* 45px / 36px */
 	margin-bottom: 1em;
@@ -33,6 +34,7 @@ h1 {
 h2 {
 	font-size: rem(26);
 	/* 1.625x body copy size = 26px */
+	font-weight: 800;
 	line-height: 1.15384615;
 	/* 30px / 26px */
 	margin-bottom: rem(24);
@@ -41,6 +43,7 @@ h2 {
 h3 {
 	font-size: rem(22);
 	/* 1.375x body copy size = 22px */
+	font-weight: 800;
 	line-height: 1.13636364;
 	/* 25px / 22px */
 	margin-bottom: rem(20);
@@ -49,11 +52,13 @@ h3 {
 h4 {
 	font-size: rem(18);
 	/* 1.125x body copy size = 18px */
+	font-weight: 600;
 	line-height: 1.11111111;
 	margin-bottom: rem(14);
 }
 
 h5 {
+	font-weight: 600;
 	margin-bottom: rem(8);
 }
 
@@ -63,6 +68,7 @@ h6 {
 }
 
 
+// 700px
 @media (min-width: 43.75em) {
 	
   h1 {
@@ -73,14 +79,14 @@ h6 {
   }
   
   h2 {
-    font-size: 2em;
+    font-size: rem(32);
     /* 2x body copy size = 32px */
     line-height: 1.25;
-  margin-bottom: rem(24);
+	margin-bottom: rem(24);
   }
   
   h3 {
-    font-size: 1.5em;
+    font-size: rem(24);
     /* 1.5x body copy size = 24px */
     line-height: 1.25;
 	margin-bottom: rem(20);
@@ -94,6 +100,7 @@ h6 {
   
 }
 
+// 900px
 @media (min-width: 56.25em) {
 	
 	h1 {

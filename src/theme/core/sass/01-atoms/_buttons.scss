@@ -27,6 +27,10 @@
 // Primary Button
 .btn {
 	@extend %btn;
+	
+	&--block {
+		display: block;
+	}
 
 	&--minimalist {
 		background: transparent;
@@ -37,6 +41,11 @@
 			background: white;
 			color: $body-color;
 		}
+	}
+	
+	&--lg {
+		font-size: rem(18);
+		padding: rem(20) rem(30);
 	}
 
 }

@@ -11,7 +11,7 @@ WebFontConfig = {
 	//classes: false,
 	google: { 
 		families: [ 
-			'Roboto:300,400,400i,700,700i'
+			'Roboto:300,400,400i,600,700,700i,800'
 		] 
 	}
 };

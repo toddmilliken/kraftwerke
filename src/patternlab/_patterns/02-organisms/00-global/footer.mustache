@@ -1,5 +1,9 @@
 <footer class="site-footer" role="contentinfo">
-	<p>
-		Copyright &copy; {{ year }} {{ company.name }}, {{ company.location }}. All Rights Reserved.
-	</p>
+	<div class="inner">
+		<p>
+			Copyright &copy; {{ year }} <strong>{{ company.name }}</strong>. All Rights Reserved. <br />
+			{{ company.street }}, {{ company.location }}.
+		</p>
+		{{> molecules-social }}
+	</div>
 </footer>

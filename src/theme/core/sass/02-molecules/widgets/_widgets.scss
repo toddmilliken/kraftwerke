@@ -1,0 +1,10 @@
+// sass-lint:disable class-name-format
+.widget {
+	max-width: rem($sidebar-width);
+		
+	&_cta_btn {
+		text-align: center;
+	}
+	
+}
+// sass-lint:enable class-name-format

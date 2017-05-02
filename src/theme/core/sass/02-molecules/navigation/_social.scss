@@ -1,6 +1,11 @@
 .social {
 	margin: 0;
 	padding: 0;
+	
+	li {
+		display: inline-block;
+	}
+	
 }  
 
 
@@ -9,40 +14,44 @@
 	font-weight: normal;	
 	text-decoration: none;
 	
+	.fa-circle {
+		color: theme-color("gray");
+	}
+	
 	// brand colors
-	&.fb {
+	.fa-facebook {
 		color: $facebook;
 	}	
 	
-	&.g {
+	.fa-google-plus {
 		color: $googleplus;			
 	}	
 	
-	&.ig {
+	.fa-instagram {
 		color: $instagram;			
 	}	
 	
-	&.li {
+	.fa-linkedin {
 		color: $linkedin;			
 	}	
 	
-	&.pt {
+	.fa-pinters {
 		color: $pinterest;			
 	}	
 	
-	&.tw {
+	.fa-twitter {
 		color: $twitter;			
 	}	
 	
-	&.rss {
+	.fa-rss {
 		color: $rss;			
 	}	
 	
-	&.vm {
+	.vm {
 		color: $vimeo;			
 	}	
 	
-	&.yt {
+	.fa-youtube {
 		color: $youtube;
 	}		
 	
