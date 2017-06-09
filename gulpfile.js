@@ -327,12 +327,18 @@ gulp.task('theme:generate-pot-files', function () {
  * @ref: https://www.npmjs.com/package/gulp-concat
  * @ref: https://www.npmjs.com/package/gulp-uglify
  */
-gulp.task('theme:scripts', gulp.series(function() {
-	return gulp.src([
-			src.theme.js + 'theme/**/*.js',
-			'!' + src.theme.js + 'vendor-footer/**/*',
-			'!' + src.theme.js + 'vendor-head/**/*'
-		], { dot: true })
+gulp.task('theme-head:scripts', gulp.series(function() {
+	return gulp.src(src.theme.js + 'theme-head/**/*.js', { dot: true })
+		//.pipe(jshint())
+		//.pipe(jshint.reporter('default'))
+		.pipe(concat('child-theme-head.js'))
+		// Distribute to site
+		.pipe(gulp.dest(wp.theme.js))
+		// Distribute to Pattern Lab
+		.pipe(gulp.dest(src.patternlab.js));
+}));
+gulp.task('theme-footer:scripts', gulp.series(function() {
+	return gulp.src(src.theme.js + 'theme-footer/**/*.js', { dot: true })
 		.pipe(jshint())
 		.pipe(jshint.reporter('default'))
 		.pipe(concat('child-theme.js'))
@@ -345,7 +351,8 @@ gulp.task('theme:scripts', gulp.series(function() {
 gulp.task('theme:single-scripts', gulp.series(function() {
 	return gulp.src([
 			src.theme.js + '*.js',
-			'!' + src.theme.js + 'theme/**/*',
+			'!' + src.theme.js + 'theme-head/**/*',
+			'!' + src.theme.js + 'theme-footer/**/*',
 			'!' + src.theme.js + 'vendor-footer/**/*',
 			'!' + src.theme.js + 'vendor-head/**/*'
 		], { dot: true })
@@ -504,7 +511,8 @@ gulp.task("theme:build", gulp.series([
 	'acf:update-src',
 	'theme:clean',
 	'theme:sass',
-	'theme:scripts',
+	'theme-head:scripts',
+	'theme-footer:scripts',
 	'theme:single-scripts',
 	'theme:distribute-vendor-head',
 	'theme:distribute-vendor-footer',
@@ -588,7 +596,7 @@ gulp.task('watch', gulp.series(function() {
 	gulp.watch(src.theme.sass + '**/*.scss', gulp.series(['theme:sass']));
 
 	// Scripts Watcher
-	gulp.watch(src.theme.js + '**/*.js', gulp.series(['theme:scripts', 'theme:single-scripts']));
+	gulp.watch(src.theme.js + '**/*.js', gulp.series(['theme-head:scripts', 'theme-footer:scripts', 'theme:single-scripts']));
 	
 	// Languages Watcher
 	gulp.watch(src.theme.languages + '**/*.php', gulp.series(['theme:generate-pot-files']));

@@ -2,10 +2,9 @@
 // DEFAULT FORM ELEMENTS
 //---
 label {
+	@include font-family( "primary" , 600 );
 	color: $label-color;
 	display: block;
-	font-family: $primary-face;
-	font-weight: 600;
 	margin-bottom: rem(6);
 	vertical-align: middle;
 }

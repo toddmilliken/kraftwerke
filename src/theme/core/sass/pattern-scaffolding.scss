@@ -177,9 +177,9 @@
 // FONTS
 //---
 .primary-face {
-	font-family: $primary-face;	
+	@include font-family( "primary" );
 }
 
 .secondary-face {
-	font-family: $secondary-face;	
+	@include font-family( "secondary" );
 }

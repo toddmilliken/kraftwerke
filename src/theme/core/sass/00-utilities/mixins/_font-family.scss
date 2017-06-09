@@ -1,0 +1,17 @@
+@mixin font-family( $font-family: sans-serif, $font-weight: 400, $font-style: normal ) {
+	$fallback-font: sans-serif;
+	$custom-font: $font-family;
+	$custom-font-loaded-class: ".fonts-loaded";
+	@if $font-family == "primary" { 
+		$fallback-font: Helvetica, Arial, sans-serif; // Roboto
+		$custom-font: "Roboto", $fallback-font;
+	} @else if $font-family == "secondary" {
+		$fallback-font: Helvetica, Arial, sans-serif; // Roboto Condensed
+		$custom-font: "Porscha Condensed", $fallback-font;
+	} 
+	font-family: $fallback-font;
+	font-weight: $font-weight;
+	#{$custom-font-loaded-class} & {
+		font-family: $custom-font;
+	}
+}

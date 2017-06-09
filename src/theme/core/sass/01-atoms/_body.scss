@@ -1,12 +1,11 @@
 // Body copy
 body {
+	@include font-family( "primary", 300 );
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background-color: theme-color("gray", "lighter");
 	color: theme-color("gray", "dark");
-	font-family: $primary-face;
 	font-size: 100%;
-	font-weight: 300;
 	line-height: ( 24 / 16 );
 	overflow-x: hidden;
 	position: relative;

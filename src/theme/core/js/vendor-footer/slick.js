@@ -15,7 +15,7 @@
 
  */
 /* global window, document, define, jQuery, setInterval, clearInterval */
-(function(factory) {
+;(function(factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
         define(['jquery'], factory);
@@ -104,6 +104,7 @@
                 loadIndex: 0,
                 $nextArrow: null,
                 $prevArrow: null,
+                scrolling: false,
                 slideCount: null,
                 slideWidth: null,
                 $slideTrack: null,
@@ -111,6 +112,7 @@
                 sliding: false,
                 slideOffset: 0,
                 swipeLeft: null,
+                swiping: false,
                 $list: null,
                 touchObject: {},
                 transformsEnabled: false,
@@ -481,7 +483,7 @@
         var _ = this,
             i, dot;
 
-        if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+        if (_.options.dots === true) {
 
             _.$slider.addClass('slick-dotted');
 
@@ -1039,10 +1041,14 @@
         var pagerQty = 0;
 
         if (_.options.infinite === true) {
-            while (breakPoint < _.slideCount) {
-                ++pagerQty;
-                breakPoint = counter + _.options.slidesToScroll;
-                counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _.options.slidesToShow;
+            if (_.slideCount <= _.options.slidesToShow) {
+                 ++pagerQty;
+            } else {
+                while (breakPoint < _.slideCount) {
+                    ++pagerQty;
+                    breakPoint = counter + _.options.slidesToScroll;
+                    counter += _.options.slidesToScroll <= _.options.slidesToShow ? _.options.slidesToScroll : _.options.slidesToShow;
+                }
             }
         } else if (_.options.centerMode === true) {
             pagerQty = _.slideCount;
@@ -1335,7 +1341,7 @@
 
         var _ = this;
 
-        if (_.options.dots === true && _.slideCount > _.options.slidesToShow) {
+        if (_.options.dots === true) {
             $('li', _.$dots).on('click.slick', {
                 message: 'index'
             }, _.changeSlide);
@@ -1405,7 +1411,7 @@
         $('[draggable!=true]', _.$slideTrack).on('dragstart', _.preventDefault);
 
         $(window).on('load.slick.slick-' + _.instanceUid, _.setPosition);
-        $(document).ready(_.setPosition);
+        $(_.setPosition);
 
     };
 
@@ -1630,7 +1636,9 @@
 
             _.animating = false;
 
-            _.setPosition();
+            if (_.slideCount > _.options.slidesToShow) {
+                _.setPosition();
+            }
 
             _.swipeLeft = null;
 
@@ -2390,8 +2398,7 @@
 
         if (_.slideCount <= _.options.slidesToShow) {
 
-            _.setSlideClasses(index);
-            _.asNavFor(index);
+            _.slideHandler(index, false, true);
             return;
 
         }
@@ -2412,10 +2419,6 @@
         }
 
         if (_.options.fade === true && _.currentSlide === index) {
-            return;
-        }
-
-        if (_.slideCount <= _.options.slidesToShow) {
             return;
         }
 
@@ -2586,6 +2589,13 @@
             direction;
 
         _.dragging = false;
+        _.swiping = false;
+
+        if (_.scrolling) {
+            _.scrolling = false;
+            return false;
+        }
+
         _.interrupted = false;
         _.shouldClick = ( _.touchObject.swipeLength > 10 ) ? false : true;
 
@@ -2696,11 +2706,11 @@
 
         var _ = this,
             edgeWasHit = false,
-            curLeft, swipeDirection, swipeLength, positionOffset, touches;
+            curLeft, swipeDirection, swipeLength, positionOffset, touches, verticalSwipeLength;
 
         touches = event.originalEvent !== undefined ? event.originalEvent.touches : null;
 
-        if (!_.dragging || touches && touches.length !== 1) {
+        if (!_.dragging || _.scrolling || touches && touches.length !== 1) {
             return false;
         }
 
@@ -2712,18 +2722,22 @@
         _.touchObject.swipeLength = Math.round(Math.sqrt(
             Math.pow(_.touchObject.curX - _.touchObject.startX, 2)));
 
+        verticalSwipeLength = Math.round(Math.sqrt(
+            Math.pow(_.touchObject.curY - _.touchObject.startY, 2)));
+
+        if (!_.options.verticalSwiping && !_.swiping && verticalSwipeLength > 4) {
+            _.scrolling = true;
+            return false;
+        }
+
         if (_.options.verticalSwiping === true) {
-            _.touchObject.swipeLength = Math.round(Math.sqrt(
-                Math.pow(_.touchObject.curY - _.touchObject.startY, 2)));
+            _.touchObject.swipeLength = verticalSwipeLength;
         }
 
         swipeDirection = _.swipeDirection();
 
-        if (swipeDirection === 'vertical') {
-            return;
-        }
-
         if (event.originalEvent !== undefined && _.touchObject.swipeLength > 4) {
+            _.swiping = true;
             event.preventDefault();
         }
 

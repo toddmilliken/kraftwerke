@@ -1,6 +1,6 @@
 // font-size of the Kraftwerke text
 .logo-text {
-	font-family: $secondary-face;
+	@include font-family( "secondary" );
 	font-size: rem(22);
 	letter-spacing: 2px;
 	line-height: 1.1;
@@ -9,7 +9,7 @@
 	text-decoration: none;
 	
 	sup {
-		font-family: $primary-face;
+		@include font-family( "primary" );
 		font-size: rem(13);
 	}
 	

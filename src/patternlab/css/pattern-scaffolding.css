@@ -288,9 +288,19 @@
 }
 
 .primary-face {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.fonts-loaded .primary-face {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
 }
 
 .secondary-face {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+.fonts-loaded .secondary-face {
   font-family: "Porscha Condensed", Helvetica, Arial, sans-serif;
 }
