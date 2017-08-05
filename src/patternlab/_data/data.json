@@ -76,6 +76,12 @@
 		"subtitle" : "Lorem ipsum dolor sit amet, consectetuer adipiscing" ,
 		"description" : "Pellentesque nulla nisl, luctus vitae pretium vitae, faucibus sed lectus. Vestibulum eget facilisis risus. Fusce ac cursus ante, vel consequat nibh."						
 	},
+	"breadcrumbs" : false ,
+	"twocrumbs" : false ,
+	"threecrumbs" : true ,
+	"crumb1" : "Sample Page" ,
+	"crumb2" : "Sample Child Page" ,
+	"crumb3" : "Sample Tertiary Child Page",
 	"btn" : {
 		"class" : "btn" ,
 		"text" : "Learn More" 

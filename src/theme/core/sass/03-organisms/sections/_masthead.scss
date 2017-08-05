@@ -3,6 +3,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: white;
+	overflow: hidden;
 	position: relative;
 	
 	.page-title ,
@@ -15,22 +16,78 @@
 	&__flex-parent {
 		display: flex;
 		flex-direction: row;
+		position: relative;
+			z-index: 1;
 		width: 100%;
 	}
 	
-	// IE Fix so we can add a min-height to flex-child
-	// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
-	&__flex-child {
-		align-items: center;
-		display: flex;
-		flex-wrap: wrap;
-		min-height: rem(450);
+	&__flex-child ,
+	&__flex-child.inner {		
 		padding-top: rem($siteheader-height + 30);
-		padding-bottom: rem(30);
-		width: 100%;
+		padding-bottom: rem(20);
+	}
+	
+	&__breadcrumbs {
+		margin-top: rem(30);
+	}
+	
+}
+
+
+@include smartphone-up {
+	
+	.masthead {
 		
-		.inner > :last-child {
-			margin-bottom: 0;
+		// IE Fix so we can add a min-height to flex-child
+		// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
+		&__flex-parent {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+		}
+		
+		// IE Fix so we can add a min-height to flex-child
+		// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
+		&__flex-child ,
+		&__flex-child.inner {
+			align-items: center;
+			display: flex;
+			flex: 1 1 auto;
+			flex-direction: column;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			min-height: rem(480 - $siteheader-height);
+			max-width: rem($width-center) !important;
+			padding: rem(20) rem(20);
+			padding-top: rem($siteheader-height);
+			width: 100%;
+		}
+			
+		.page-header-wrapper ,
+		&__breadcrumbs {
+			margin-top: auto;
+			width: 100%;
+		}
+			
+		.page-header {
+			padding-top: rem(30);
+			padding-bottom: rem(30);
+		}
+	
+	}
+
+	
+}
+
+
+@include inner-up {
+	
+	.masthead {
+		
+		&__flex-child ,
+		&__flex-child.inner {
+			padding: rem(20) 0;
+			padding-top: rem($siteheader-height);
 		}
 		
 	}

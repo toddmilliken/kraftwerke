@@ -1,0 +1,23 @@
+/* Prevents img without src to appear */
+img {
+	
+	&[data-original] {
+		opacity: 0;
+		transition: opacity 250ms ease 0s, transform 250ms ease 0s, visibility 0s linear 250ms;
+		visibility: hidden;
+		
+		&.loaded {
+			opacity: 1;
+			transition: opacity 250ms, transform 250ms, visibility 0s linear;
+			visibility: visible;
+		}
+		
+	}
+}
+
+
+.loaded > img[data-original] {
+	opacity: 1;
+	transition: opacity 250ms, transform 250ms, visibility 0s linear;
+	visibility: visible;
+}

@@ -1,4 +1,26 @@
 (function($) {	
+	
+	var initLazyLoading = function() {
+	
+		var myLazyLoad = new LazyLoad({
+		    show_while_loading: true, //best for progressive JPEG
+			callback_set: function (img) {
+		        picturefill({
+					reevaluate: true,
+		            elements: [img]
+		        });
+		    },
+		});
+	
+	};
+		
+	
+	$(window).on('load', function(){
+		initLazyLoading();	
+	});	
+
+})(jQuery);	
+(function($) {	
 		
 	var navicon = document.getElementById('js-navicon') ,
 	    naviconClose = document.getElementById('js-navicon-close') ,

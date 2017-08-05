@@ -23,6 +23,9 @@ require 'functions/template-tags.php';
 /** Registers theme stylesheets and scripts */ 
 require 'functions/enqueue.php';
 
+/** Yoast WPSEO  */ 
+require 'functions/yoast-wpseo.php';
+
 /** Registers additional widgetized areas. Re-enabled disable WP widgets */
 //require 'functions/sidebars.php';
 

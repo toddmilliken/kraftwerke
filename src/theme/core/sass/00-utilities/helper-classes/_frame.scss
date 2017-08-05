@@ -1,0 +1,59 @@
+// Wraps absolutely positioned `img` tags
+// Useful for creating a container for image tags and absolutely positioned img containers
+//.layer__img-frame {
+.frame {
+	overflow: hidden;
+	position: relative;
+	
+	&--cover {
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+	}
+	
+	&--light-overlay:after ,
+	&--dark-overlay:after ,
+	&--to-dark:after ,
+	&--to-light:after {
+		content: "";
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+	}
+	
+	&--light-overlay:after {
+		background-color: rgba(white, .3);		
+	}
+	
+	&--dark-overlay:after {
+		background-color: rgba(black, .3);
+	}
+	
+	&--to-dark:after {
+		background: linear-gradient(rgba(black, 0), black);
+	}
+	
+	&--to-light:after {
+		background: linear-gradient(rgba(white, 0), white);
+	}
+	
+	// background image (usually img tag inside .layer__img-frame )
+	//.layer__bg-img {
+	&__media {
+		height: auto;
+		max-width: none;
+		min-height: 100%;
+		min-width: 100%;
+		position: absolute;
+			top: 50%;
+			left: 50%;
+			z-index: 0;
+		transform: translate(-50%, -50%);
+		width: auto;
+	}
+	
+}

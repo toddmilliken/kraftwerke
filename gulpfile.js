@@ -386,7 +386,9 @@ var vendorURLsFooter = [
 	// Hover Intent
 	'https://raw.githubusercontent.com/briancherne/jquery-hoverIntent/master/jquery.hoverIntent.js',
 	// Flexibility
-	'https://raw.githubusercontent.com/jonathantneal/flexibility/master/flexibility.js'
+	'https://raw.githubusercontent.com/jonathantneal/flexibility/master/flexibility.js',
+	// Verlok Lazy Load
+	'https://raw.githubusercontent.com/verlok/lazyload/master/dist/lazyload.min.js'
 ];
 
 //---

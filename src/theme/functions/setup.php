@@ -62,10 +62,17 @@ function kw_setup() {
 	 *
 	 * @link    https://developer.wordpress.org/reference/functions/add_image_size/
 	 */
-/*
-	add_image_size( 'homepage-slider', 1500, 660, true );
-	add_image_size( 'custom-background-smartphone-portrait', 320, 535, array('left', 'top') );
-*/
+	
+	add_image_size( 'masthead', 1600, 374, true );
+	add_image_size( 'masthead-mobile', 640, 240, true );
+	add_image_size( '16-9-xl', 1600, 900, true );	
+	add_image_size( '16-9-lg', 1200, 675, true );
+	add_image_size( '16-9-md', 970, 545, true );
+	add_image_size( '16-9-sm', 640, 360, true );
+	add_image_size( '16-9-xs', 480, 270, true );
+	add_image_size( 'panel-tablet', 768, 1024, array('center', 'top') );
+	add_image_size( 'panel-mobile', 640, 736, array('center', 'top') );
+	//add_image_size( 'custom-background-smartphone-portrait', 320, 535, array('left', 'top') );
 	
 }
 add_action( 'after_setup_theme', 'kw_setup' );

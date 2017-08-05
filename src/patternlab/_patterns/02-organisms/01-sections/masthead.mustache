@@ -1,8 +1,11 @@
 <section class="masthead" style="background-image: url( {{img.landscape-16x9-hero.src}} );">
 	<div class="masthead__flex-parent">
-		<div class="masthead__flex-child">
-			<div class="inner">
-				{{> molecules-text-page-header }}
+		<div class="masthead__flex-child inner">
+			{{> molecules-text-page-header }}
+			<div class="masthead__breadcrumbs">
+				
+					{{> molecules-breadcrumbs(threecrumbs: true)}}
+				
 			</div>
 		</div>
 	</div>
