@@ -13,8 +13,8 @@
 			left: 0;
 	}
 	
-	&--light-overlay:after ,
-	&--dark-overlay:after ,
+	&--light:after ,
+	&--dark:after ,
 	&--to-dark:after ,
 	&--to-light:after {
 		content: "";
@@ -25,11 +25,11 @@
 			left: 0;
 	}
 	
-	&--light-overlay:after {
+	&--light:after {
 		background-color: rgba(white, .3);		
 	}
 	
-	&--dark-overlay:after {
+	&--dark:after {
 		background-color: rgba(black, .3);
 	}
 	

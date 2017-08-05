@@ -10,13 +10,14 @@
  * @since 0.7.0
  */
  
-$masthead = get_field('int_masthead_image');
+$post_id  = get_the_id();
+$masthead_attachment_id = get_post_meta( $post_id, 'int_masthead_image', true );
 
-if ( !$masthead && ($ancestors = get_post_ancestors($post)) ) :
+if ( !$masthead_attachment_id && ($ancestors = get_post_ancestors($post_id)) ) :
 	
 	foreach ( $ancestors as $a ) :
-		if ( $has_masthead_image = get_field('int_masthead_image', $a) ) :
-			$masthead = $has_masthead_image;
+		if ( $has_masthead_image = get_post_meta( $a, 'int_masthead_image', true ) ) :
+			$masthead_attachment_id = $has_masthead_image;
 			break;
 		endif;
 	endforeach;
@@ -24,8 +25,11 @@ if ( !$masthead && ($ancestors = get_post_ancestors($post)) ) :
 endif;
 	
 //! IF THERE IS STILL NO MASTHEAD IMAGE USE THE FALLBACK IMAGE DEFINED IN OPTIONS
-if ( !$masthead || is_search() || is_404() ) $masthead = get_field('opts_masthead', 'option'); 
-	
+if ( !$masthead_attachment_id || is_search() || is_404() ) $masthead_attachment_id = get_option('options_opts_masthead'); 
+
+$masthead_alt         = get_post_meta( $masthead_attachment_id, '_wp_attachment_image_alt', true);
+$masthead_desktop_url = wp_get_attachment_image_url( $masthead_attachment_id, 'masthead' );
+$masthead_mobile_url  = wp_get_attachment_image_url( $masthead_attachment_id, 'masthead-mobile' );
 ?>
 
 <section class="masthead">
@@ -39,10 +43,12 @@ if ( !$masthead || is_search() || is_404() ) $masthead = get_field('opts_masthea
 			<?php endif; ?>
 		</div>
 	</div>
-	<div class="frame frame--cover">
+	<?php if ( !empty($masthead_desktop_url) ) : ?>
+	<div class="frame frame--cover frame--dark">
 		<picture>
-			<source media="(min-width: 641px)" data-original-set="<?php echo $masthead['sizes']['masthead']; ?>" />
-			<img class="frame__media" alt="<?php echo $masthead['alt']; ?>" data-original="<?php echo $masthead['sizes']['masthead-mobile']; ?>">
+			<source media="(min-width: 641px)" data-original-set="<?php echo esc_url($masthead_desktop_url); ?>" />
+			<img class="frame__media" alt="<?php echo esc_attr($masthead_alt); ?>" data-original="<?php echo esc_url($masthead_mobile_url); ?>">
 		</picture>
 	</div>
+	<?php endif; ?>
 </section>
