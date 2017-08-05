@@ -83,17 +83,20 @@
 	
 	// Search form (Desktop)
 	.site-search {
-		height: rem($masthead-height - $siteheader-height);
+		height: rem(328);
 		
 		//sass-lint:disable no-qualifying-elements
 		input.search-input {
 			font-size: rem(44);
+			padding-right: rem(90);
 		}
 		
 		.search-button {
 			font-size: rem(60);
 			height: rem(100);
+			text-align: right;
 			top: auto;
+			right: 0;
 			width: rem(100);
 		}
 		//sass-lint:enable no-qualifying-elements

@@ -10,7 +10,7 @@
 			'container'       => '',
 			'container_class' => '',
 			'items_wrap' 	  	=> '<ul class="%2$s">%3$s</ul>',
-			'menu_class'      => 'main-menu',
+			'menu_class'      => 'menu main-menu',
 		));
 	endif;
 	?>

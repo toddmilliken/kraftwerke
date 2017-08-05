@@ -53,6 +53,16 @@ header('X-UA-Compatible: IE=edge,chrome=1'); ?>
 			<a href="#" class="custom-logo-link">
 				<div class="logo-text" href="http://staging.kraftwerke1.com">Kraftwerke<sup>&reg;</sup></div>
 			</a>
+			<div id="js-search-container" class="site-search">
+				<div class="inner">
+					<form role="search" method="get" class="search-form" action="<?php echo home_url('/'); ?>">
+						<div class="search-inner">
+							<input placeholder="<?php _e( 'Search', 'kraftwerke' ); ?>" type="text" name="s" class="search-input">
+							<button type="submit" class="search-button" value=""><i class="fa fa-search" aria-hidden="true"></i></button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</header>
 		<?php
 		/**
