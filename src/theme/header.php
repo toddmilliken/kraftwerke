@@ -46,12 +46,31 @@ header('X-UA-Compatible: IE=edge,chrome=1'); ?>
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</div>
 				<div class="site-header__callouts">
-					<div class="header-phone"><strong>Phone</strong>: 888.888.8888</div>
-					<a href="#" class="header-cta-btn">Schedule Service <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>	
+					<?php if ( $phone = get_option('options_opts_phone') ) : ?>
+						<div class="header-phone"><strong><?php _e('Phone', 'kraftwerke'); ?></strong>: <?php echo $phone; ?></div>
+					<?php endif; ?>
+					<?php if ( $header_cta = get_option('options_opts_is_header_cta') ) :
+						$link_target = '_self';
+						$link_text   = get_option('options_opts_header_cta_text');
+						$link_url    = false;
+						switch ( get_option('options_opts_header_cta_link_type') ) {
+							case 'internal' :
+								$internal_post_id = get_option('options_opts_header_cta_link_internal');
+								$link_url = !empty($internal_post_id) ? get_permalink($internal_post_id) : false;
+								get_option('options_opts_header_cta_link_internal');
+								break;
+							case 'custom' :
+								$link_target = get_option('options_opts_header_cta_link_target') ? '_blank' : '_self';
+								$link_url = get_option('options_opts_header_cta_link_custom');
+								break;
+						}
+					?>
+						<a href="<?php echo esc_url($link_url); ?>" class="header-cta-btn" target="<?php echo esc_attr($link_target); ?>"><?php echo $link_text; ?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					<?php endif; ?>
 				</div>
 			</div>
-			<a href="#" class="custom-logo-link">
-				<div class="logo-text" href="http://staging.kraftwerke1.com">Kraftwerke<sup>&reg;</sup></div>
+			<a href="<?php echo home_url('/'); ?>" class="custom-logo-link">
+				<div class="logo-text">Kraftwerke<sup>&reg;</sup></div>
 			</a>
 			<div id="js-search-container" class="site-search">
 				<div class="inner">
