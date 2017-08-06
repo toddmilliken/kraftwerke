@@ -1,5 +1,6 @@
 // sass-lint:disable class-name-format
 .widget {
+	line-height: 1.5;
 	max-width: rem($sidebar-width);
 	
 	&:not(.widget_cta-btn) {
@@ -25,6 +26,12 @@
 			width: rem(22);
 		}
 
+	}
+	
+	p ,
+	ul ,
+	ol {
+		margin-bottom: rem(12);
 	}
 	
 	ul ,
@@ -84,6 +91,15 @@
 			font-weight: 600;
 			padding: 0 rem(12);
 			text-transform: uppercase;
+		}
+		
+	}
+	
+	// Text widget
+	.textwidget {
+		
+		> :last-child {
+			margin-bottom: 0;
 		}
 		
 	}

@@ -5,8 +5,8 @@
  * Registers support for various Wordpress featuers such as featured image support, 
  * custom image sizes, etc. 
  *
- * @package Kraftwerke
- * @since 1.0.0
+ * @package  Kraftwerke
+ * @since    1.0.0
  */
 
 

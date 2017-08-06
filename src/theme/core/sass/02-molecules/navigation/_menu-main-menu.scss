@@ -123,3 +123,16 @@
 	}
 	
 }
+
+
+@include tablet-landscape-up {
+	
+	.main-menu > .menu-item > a:hover {
+		background-color: rgba(white, .75);
+	}
+	
+	.main-menu .sub-menu a:hover {
+		color: $primary-color;
+	}
+	
+}

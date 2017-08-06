@@ -16,15 +16,18 @@
 /**
  * Functions
  */
+
+// Enqueued theme stylesheets and scripts
+require 'functions/enqueue.php';
+ 
+// Navigation Menus
+require 'functions/nav-menus.php';
  
 // Theme setup (supports, image crops, etc)
 require 'functions/setup.php';
 
 // Theme template tags
 require 'functions/template-tags.php';
-
-// Enqueued theme stylesheets and scripts
-require 'functions/enqueue.php';
 
 // Widgets
 require 'functions/widgets.php';
