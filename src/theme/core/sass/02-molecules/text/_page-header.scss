@@ -6,11 +6,13 @@
 
 .page-title {
 	font-weight: 800;
+	letter-spacing: .03em;
 	margin-bottom: rem(8)
 }
 
 .page-subtitle {
-	font-weight: 400;
+	font-weight: 300;
+	letter-spacing: .03em;
 	margin-bottom: rem(15);
 }
 
@@ -25,10 +27,6 @@
 	
 	.page-title {
 		font-size: rem(44);
-	}
-	
-	.page-subtitle {
-		font-weight: 400;
 	}
 	
 }

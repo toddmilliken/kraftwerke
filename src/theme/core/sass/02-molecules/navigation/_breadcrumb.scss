@@ -1,12 +1,10 @@
-$breadcrumb-separation: 8; // the amount of separation in rem units between breadcrumbs
-
-
 .breadcrumbs {
 	font-size: rem(16);
 
 
 	// the breadcrumb link tags
 	[rel="v:url"] {
+		font-weight: 700;
 		text-decoration: none;
 		margin-right: rem(3);
 		transition: border-color 250ms ease 0s, color 250ms ease 0s;
@@ -16,11 +14,11 @@ $breadcrumb-separation: 8; // the amount of separation in rem units between brea
 		}
 		
 	}
+
+
+	// the space after the crumb before the next breadcrumb. 
+	[typeof="v:Breadcrumb"] span {
+		margin-left: rem(4);
+	}
 	
-}
-
-
-// the separator <span> tag used so we can apply space after the crumb. 
-.breadcrumb-separator {
-	margin-right: rem($breadcrumb-separation);
 }

@@ -1,8 +1,11 @@
-
-
 .layer__sidebar {
 	max-width: rem($sidebar-width);
 	width: 100%;
+	
+	.widget + .widget {
+		margin-top: rem(32);
+	}
+	
 }
 
 

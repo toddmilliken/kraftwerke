@@ -13,21 +13,28 @@
  */
 
 
+/**
+ * Functions
+ */
  
-/** Registers support for various WordPress features */
+// Theme setup (supports, image crops, etc)
 require 'functions/setup.php';
 
-/** Defines theme template tags */
+// Theme template tags
 require 'functions/template-tags.php';
 
-/** Registers theme stylesheets and scripts */ 
+// Enqueued theme stylesheets and scripts
 require 'functions/enqueue.php';
 
-/** Yoast WPSEO  */ 
+// Widgets
+require 'functions/widgets.php';
+
+// Yoast WPSEO functionality
 require 'functions/yoast-wpseo.php';
 
-/** Registers additional widgetized areas. Re-enabled disable WP widgets */
-//require 'functions/sidebars.php';
 
-/** Modifies WP Core widgets behaviors */
-//require 'functions/widgets.php';
+/**
+ * Classes
+ */
+
+require 'classes/kwer-widget-cta-btn.php';

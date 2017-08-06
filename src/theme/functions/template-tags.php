@@ -87,7 +87,7 @@ function kwer_main_open( $args = array() ) {
 							}
 						?>
 						
-						<article class="layer__content">
+						<article class="layer__content editor-styles">
 							
 							<?php
 								/**
