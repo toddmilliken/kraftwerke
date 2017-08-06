@@ -13,6 +13,38 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: src/theme/header.php:50
+msgid "Phone"
+msgstr ""
+
+#: src/theme/header.php:79
+msgid "Search"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:74
+msgid "Call to Action Button"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:88
+msgid "Title"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:93
+msgid "Display Title"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:98
+msgid "Internal Link"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:100
+msgid "Choose One"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-cta-btn.php:104
+msgid "External Link"
+msgstr ""
+
 #: src/theme/partials/site-navigation.php:2
 msgid "Close"
 msgstr ""

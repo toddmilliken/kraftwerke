@@ -1223,8 +1223,8 @@ body {
   font-weight: 700;
   border-bottom: 1px solid #42ab9e;
   color: #42ab9e;
-  font-size: 85%;
-  letter-spacing: 2px;
+  font-size: 0.875rem;
+  letter-spacing: .03em;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
@@ -2125,15 +2125,27 @@ pre {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  transition: color 250ms ease 0s, -webkit-transform 250ms ease 0s;
-  transition: transform 250ms ease 0s, color 250ms ease 0s;
-  transition: transform 250ms ease 0s, color 250ms ease 0s, -webkit-transform 250ms ease 0s;
+  transition: color 250ms ease 250ms, -webkit-transform 250ms ease 0s;
+  transition: transform 250ms ease 0s, color 250ms ease 250ms;
+  transition: transform 250ms ease 0s, color 250ms ease 250ms, -webkit-transform 250ms ease 0s;
 }
 
 .main-menu .toggle-control--active:after {
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transform: translate(-50%, -50%) rotate(180deg);
       -ms-transform: translate(-50%, -50%) rotate(180deg);
           transform: translate(-50%, -50%) rotate(180deg);
+  transition: color 250ms ease 0ms, -webkit-transform 250ms ease 0s;
+  transition: transform 250ms ease 0s, color 250ms ease 0ms;
+  transition: transform 250ms ease 0s, color 250ms ease 0ms, -webkit-transform 250ms ease 0s;
+}
+
+.main-menu .toggle-control:hover:after {
+  color: #42ab9e;
+}
+
+.main-menu .toggle-control--active:hover:after {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .main-menu [class*="current"] > .sub-menu {
@@ -2607,6 +2619,15 @@ table tr:nth-child(even) {
   margin-bottom: 0;
 }
 
+.widget_recent_entries a, .widget_recent_comments a, .widget_archive a, .widget_categories a, .widget_meta a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.widget_recent_entries a:hover, .widget_recent_comments a:hover, .widget_archive a:hover, .widget_categories a:hover, .widget_meta a:hover {
+  color: #202121;
+}
+
 .widget_recent_entries ul,
 .widget_recent_entries li, .widget_recent_comments ul,
 .widget_recent_comments li, .widget_archive ul,
@@ -2654,6 +2675,31 @@ table tr:nth-child(even) {
 
 .widget .textwidget > :last-child {
   margin-bottom: 0;
+}
+
+.widget_nav_menu .menu {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 0;
+}
+
+.widget_nav_menu .menu > .menu-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.widget_nav_menu .menu > .menu-item > a {
+  padding: 10px 0;
+}
+
+.widget_nav_menu a {
+  color: #42ab9e;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.widget_nav_menu a:hover {
+  color: #202121;
 }
 
 .site-header {

@@ -1,14 +1,14 @@
 <?php
 /**
- * Kwer_Widget_CTA_Btn
+ * Kwer_Widget_Text
  *
- * Adds a Call-to-action button widget
+ * Displays a description with link to learn more.
  *
  * @package  Kraftwerke
  * @since    1.0.0
  */
 
-class Kwer_Widget_CTA_Btn extends WP_Widget
+class Kwer_Widget_Text extends WP_Widget
 {
 	/**
 	 * Root ID for all widgets of this type.
@@ -69,12 +69,12 @@ class Kwer_Widget_CTA_Btn extends WP_Widget
 	public function __construct()
 	{
 		
-		$this->widget_id = 'cta-btn';
+		$this->widget_id = 'kwer-text';
 		
-		$this->widget_name = __('Call to Action Button', 'kraftwerke');
+		$this->widget_name = __('Text with Link', 'kraftwerke');
 		
 		$this->widget_ops = array(
-			'description' => 'Adds a button link.',
+			'description' => 'Arbitrary text with a styled link.',
 		);
 		
 		$this->control_ops = array(
@@ -91,6 +91,16 @@ class Kwer_Widget_CTA_Btn extends WP_Widget
 			array(
 				'name' => 'display_title',
 				'label' => __('Display Title', 'kraftwerke'),
+				'type' => 'text',
+			),
+			array(
+				'name' => 'description',
+				'label' => __('Description', 'kraftwerke'),
+				'type' => 'textarea',
+			),
+			array(
+				'name' => 'link_text',
+				'label' => __('Link Text', 'kraftwerke'),
 				'type' => 'text',
 			),
 			array(
@@ -113,16 +123,32 @@ class Kwer_Widget_CTA_Btn extends WP_Widget
 	{
 		// Extract arguments and define parts
 		extract($args);
+		$title       = !empty($instance['display_title']) ? $instance['display_title'] : false;
+		$description = !empty($instance['description']) ? $instance['description'] : false;
 		$is_external = !empty($instance['cta_external_link']) ? true : false;
 		$link_target = $is_external ? '_blank' : '_self';
-		$link_url    = $is_external ? $instance['cta_external_link'] : get_permalink($instance['cta_link']);
+		$link_text   = !empty( $instance['link_text'] ) ? $instance['link_text'] : __('Learn More', 'kraftwerke');
+		$link_url    = false;
+		if ( $is_external ) {
+			$link_url = !empty( $instance['cta_external_link'] ) ? $instance['cta_external_link'] : false;
+		} else {
+			$link_url = !empty( $instance['cta_link'] ) ? get_permalink($instance['cta_link']) : false;
+		}
 		
 		// Build widget HTML
 		$html  = $before_widget;
-		$html .= '<a class="btn btn--block btn--lg" href="' . $link_url . '" target="' . $link_target . '">';
-		$html .= $instance['display_title'];
-		$html .= '</a>';
-		$html .=$after_widget;
+		if ( !empty($title) ) {
+			$html .= $before_title . $title . $after_title;
+		}
+		$html .= '<div class="textwidget">';
+		if ( !empty($description) ) {
+			$html .= '<p>' . sanitize_text_field( nl2br( $description ) ) . '</p>';
+		}
+		if ( !empty($link_url) ) {
+			$html .= '<p><a class="more" href="' . $link_url . '" target="' . $link_target . '">' . $link_text . '</a></p>';
+		}
+		$html .= '</div>';
+		$html .= $after_widget;
 		
 		// Echo widget HTML
 		echo $html;
@@ -165,7 +191,7 @@ class Kwer_Widget_CTA_Btn extends WP_Widget
 				$page_title = $page->post_title;
 			}
 			
-			$this->fields[2]['items'][$page->ID] = $page_title;
+			$this->fields[4]['items'][$page->ID] = $page_title;
 			
 		}
 		
@@ -207,6 +233,12 @@ class Kwer_Widget_CTA_Btn extends WP_Widget
 					echo '<p>';
 					echo '<label for="' . $field['id'] . '">' . _($field['label']) . '</label><br />';
 					echo '<input class="widefat" type="text" name="' . $field['name'] . '" id="' . $field['id'] .'" value="' . (isset($field['value']) ? $field['value'] : '') . '" />';
+					echo '</p>';
+					break;
+				case 'textarea' :
+					echo '<p>';
+					echo '<label for="' . $field['id'] . '">' . _($field['label']) . '</label><br />';
+					echo '<textarea class="widefat" rows="3" name="' . $field['name'] . '" id="' . $field['id'] .'">' . (isset($field['value']) ? $field['value'] : '') . '</textarea>';
 					echo '</p>';
 					break;
 			}

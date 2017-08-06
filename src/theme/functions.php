@@ -40,4 +40,8 @@ require 'functions/yoast-wpseo.php';
  * Classes
  */
 
+// Widget: Call-to-action Button Link
 require 'classes/kwer-widget-cta-btn.php';
+
+// Widget: WP Text Widget (modified with cta more link fields)
+require 'classes/kwer-widget-text.php';

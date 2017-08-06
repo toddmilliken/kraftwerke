@@ -57,8 +57,8 @@
 	@include font-family( "primary" , 700 );
 	border-bottom: 1px solid $primary-color;
 	color: $primary-color;
-	font-size: 85%;
-	letter-spacing: 2px;
+	font-size: rem(14);
+	letter-spacing: .03em;
 	position: relative;
 	text-decoration: none;
 	text-transform: uppercase;
