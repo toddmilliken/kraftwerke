@@ -26,6 +26,9 @@ require 'functions/nav-menus.php';
 // Theme setup (supports, image crops, etc)
 require 'functions/setup.php';
 
+// Theme Shortcodes
+require 'functions/shortcodes.php';
+
 // Theme template tags
 require 'functions/template-tags.php';
 
@@ -42,6 +45,9 @@ require 'functions/yoast-wpseo.php';
 
 // Widget: Call-to-action Button Link
 require 'classes/kwer-widget-cta-btn.php';
+
+// Widget: Hours of Operation
+require 'classes/kwer-widget-hours.php';
 
 // Widget: WP Text Widget (modified with cta more link fields)
 require 'classes/kwer-widget-text.php';

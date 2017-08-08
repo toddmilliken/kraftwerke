@@ -19,6 +19,7 @@ function kwer_load_widgets() {
 	
 	// Call-to-action button link
     register_widget( 'Kwer_Widget_CTA_Btn' );
+    register_widget( 'Kwer_Widget_Hours' );
     register_widget( 'Kwer_Widget_Text' );
     
 }

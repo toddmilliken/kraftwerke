@@ -1,0 +1,45 @@
+.site-footer {
+	background-color: theme-color("gray", "dark");
+	color: white;
+	padding: rem(30) 0;
+	
+	&__flex {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+	
+	&__copy {
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+	&__social {
+		justify-content: flex-end;
+	}
+	
+	.social {
+		align-items: center;
+		display: flex;
+		
+		li {
+			padding-bottom: 0;
+		}
+		
+		.fa-circle {
+			background-color: rgba(white, .9);
+		}
+		
+		&__title {
+			margin-right: rem(8);
+		}
+		
+		&__link {
+			margin-left: rem(8);
+		}
+		
+	}
+	
+}

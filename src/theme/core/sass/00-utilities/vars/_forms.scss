@@ -5,6 +5,10 @@ $input-color: #5e6977;
 $input-font-size: rem(16);
 $input-padding: rem(10) rem(20);
 
-$label-color: black;
+$label-color: darken( theme-color("gray", "light"), 30% );
 
 $placeholder-color: gray;
+
+
+//! RE-USABLE COLORS COMPONENTS (example: form inputs, borders, common modular colors)
+$form-required: #e50000;

@@ -9,9 +9,31 @@
 	padding-left: 0;
 }
 
+.gfield_radio li ,
+.gfield_checkbox li {
+	padding-left: 0;
+	
+	&:before {
+		display: none;
+	}
+	
+	&:first-child {
+		padding-top: 0;
+	}
+	
+}
+
 .gform_fields {
 	margin: 0;
 	padding: 0;
+}
+
+.gsection_title {
+	margin-bottom: 0;
+}
+
+.gfield + .gfield .gsection_title {
+	padding-top: rem(40);
 }
 
 //---
@@ -19,11 +41,22 @@
 //---
 .gform_wrapper {
 	margin-bottom: rem($margin-bottom);
+	
+	.clear-multi {
+		@include clearfix;
+	}
+	
 }
 
 .gfield {
 	clear: both;
-	padding-bottom: rem(15);
+	padding-bottom: rem(24);
+	padding-left: 0;
+	
+	&:before {
+		display: none;
+	}
+	
 }
 
 .gform_description {
@@ -40,7 +73,10 @@
 }
 
 .instruction ,
-.gfield_description {
+.gfield_description ,
+.gfield_time_hour label ,
+.gfield_time_minute label {
+	color: $label-color;
 	clear: both;
 	font-size: 85%;
 }
@@ -115,6 +151,8 @@
 
 	label {
 		display: inline;
+		font-size: 85%;
+		margin-left: rem(4);
 	}
 
 }
@@ -345,7 +383,7 @@
 
 .gfield_time_ampm {
 	margin-left: rem(12);
-	width: rem(70);
+	width: rem(100);
 }
 
 
@@ -567,8 +605,10 @@ body #ui-datepicker-div[style] {
 //---
 .field_description_below {
 
-	.gfield_description {
-		margin-top: rem(4);
+	.gfield_description ,
+	.gfield_time_hour label ,
+	.gfield_time_minute label {
+		margin-top: rem(10);
 	}
 
 }

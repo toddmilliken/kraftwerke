@@ -4,8 +4,8 @@
  *
  * Displays the head element and the "site-header" element
  *
- * @package Base_Theme
- * @since 0.7.0
+ * @package  Kraftwerke
+ * @since    1.0.0
  */
 header('X-UA-Compatible: IE=edge,chrome=1'); ?>
 <!DOCTYPE html>

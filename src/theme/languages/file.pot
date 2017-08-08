@@ -25,24 +25,44 @@ msgstr ""
 msgid "Call to Action Button"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-cta-btn.php:88
+#: src/theme/classes/kwer-widget-cta-btn.php:88, src/theme/classes/kwer-widget-hours.php:88, src/theme/classes/kwer-widget-text.php:88
 msgid "Title"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-cta-btn.php:93
+#: src/theme/classes/kwer-widget-cta-btn.php:93, src/theme/classes/kwer-widget-text.php:93
 msgid "Display Title"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-cta-btn.php:98
+#: src/theme/classes/kwer-widget-cta-btn.php:98, src/theme/classes/kwer-widget-text.php:108
 msgid "Internal Link"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-cta-btn.php:100
+#: src/theme/classes/kwer-widget-cta-btn.php:100, src/theme/classes/kwer-widget-text.php:110
 msgid "Choose One"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-cta-btn.php:104
+#: src/theme/classes/kwer-widget-cta-btn.php:104, src/theme/classes/kwer-widget-text.php:114
 msgid "External Link"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-hours.php:74
+msgid "Hours of Operation"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-hours.php:93, src/theme/classes/kwer-widget-text.php:98
+msgid "Description"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-text.php:74
+msgid "Text with Link"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-text.php:103
+msgid "Link Text"
+msgstr ""
+
+#: src/theme/classes/kwer-widget-text.php:130
+msgid "Learn More"
 msgstr ""
 
 #: src/theme/partials/site-navigation.php:2

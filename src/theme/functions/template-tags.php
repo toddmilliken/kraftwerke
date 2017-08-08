@@ -4,8 +4,8 @@
  *
  * Declares common theme components and functions
  * 
- * @package Kraftwerke
- * @since   1.0.0
+ * @package  Kraftwerke
+ * @since    1.0.0
  */
  
  
