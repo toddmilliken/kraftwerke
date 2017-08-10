@@ -690,10 +690,15 @@ body #ui-datepicker-div[style] {
 	}
 
 	.gf_left_half,
-	.gf_right_half {
+	.gf_right_half ,
+	.gf_left_third ,
+	.gf_middle_third ,
+	.gf_right_third {
+		margin-left: 0;
 		width: 100%;
 
-		input {
+		.medium ,
+		.large {
 			width: 100%;
 		}
 	}
@@ -701,7 +706,8 @@ body #ui-datepicker-div[style] {
 	.gfield {
 		margin-top: 0;
 
-		input,
+		.medium ,
+		.large ,
 		.selector {
 			width: 100%;
 		}

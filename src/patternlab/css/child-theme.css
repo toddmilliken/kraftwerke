@@ -1046,17 +1046,30 @@ body #ui-datepicker-div[style] {
     margin-left: 0;
   }
   .gf_left_half,
-  .gf_right_half {
+  .gf_right_half,
+  .gf_left_third,
+  .gf_middle_third,
+  .gf_right_third {
+    margin-left: 0;
     width: 100%;
   }
-  .gf_left_half input,
-  .gf_right_half input {
+  .gf_left_half .medium,
+  .gf_left_half .large,
+  .gf_right_half .medium,
+  .gf_right_half .large,
+  .gf_left_third .medium,
+  .gf_left_third .large,
+  .gf_middle_third .medium,
+  .gf_middle_third .large,
+  .gf_right_third .medium,
+  .gf_right_third .large {
     width: 100%;
   }
   .gfield {
     margin-top: 0;
   }
-  .gfield input,
+  .gfield .medium,
+  .gfield .large,
   .gfield .selector {
     width: 100%;
   }
@@ -1372,8 +1385,7 @@ textarea::placeholder {
   border: #fff;
   box-shadow: none;
   padding: 0;
-  margin: 0;
-  width: 20px;
+  margin: 0.25rem;
 }
 
 [type="file"] {
@@ -1541,6 +1553,19 @@ select::-ms-expand {
 
 .search-field .search-button i {
   margin-left: 4px;
+}
+
+@media (max-width: 40em) {
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select[multiple="multiple"] {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+  .selector select,
+  .uploader .filename {
+    padding-left: 0.625rem;
+  }
 }
 
 body {

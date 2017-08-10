@@ -43,8 +43,7 @@ textarea {
 	border: #fff; // for ie. must match page background color
 	box-shadow: none;
 	padding: 0;
-	margin: 0;
-	width: 20px;
+	margin: rem(4);
 }
 
 [type="file"] {
@@ -234,5 +233,23 @@ select::-ms-expand {
 			}
 			
 	}
+	
+}
+
+
+@include smartphone-down {
+	
+	input:not([type="checkbox"]):not([type="radio"]) ,
+	textarea ,
+	select[multiple="multiple"] {
+		padding-left: rem(10);
+		padding-right: rem(10);
+	}
+	
+	.selector select ,
+	.uploader .filename {
+		padding-left: rem(10);
+	}
+	
 	
 }
