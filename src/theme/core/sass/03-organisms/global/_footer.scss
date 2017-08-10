@@ -3,21 +3,10 @@
 	color: white;
 	padding: rem(30) 0;
 	
-	&__flex {
-		align-items: center;
-		display: flex;
-		justify-content: space-between;
-		width: 100%;
-	}
-	
 	&__copy {
 		> :last-child {
 			margin-bottom: 0;
 		}
-	}
-	
-	&__social {
-		justify-content: flex-end;
 	}
 	
 	.social {
@@ -41,5 +30,69 @@
 		}
 		
 	}
+	
+}
+
+
+@include desktop-menu {
+	
+	.site-footer {
+		
+		&__flex {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+	
+		&__social {
+			justify-content: flex-end;
+		}
+		
+	}
+	
+}
+
+@include mobile-menu {
+
+	.site-footer {
+		
+		&__flex {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+		
+		&__copy ,
+		&__social {
+			width: 100%;
+		}
+		
+		&__copy + &__social {
+			padding-bottom: rem(30);
+		}
+		
+		&__copy {
+			order: 2;
+			text-align: center;
+		}
+	
+		&__social {
+			order: 1;
+		}
+		
+		.social {
+			justify-content: center;
+		}
+		
+	}
+
+}
+
+@include smartphone-down {
+	
+	.site-footer {
+		font-size: rem(14);
+	}	
 	
 }

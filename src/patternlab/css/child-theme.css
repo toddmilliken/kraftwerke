@@ -2662,7 +2662,7 @@ table tr:nth-child(even) {
 
 .widget:not(.widget_cta-btn) {
   border-radius: 0.375rem;
-  box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
   padding: 1.875rem 1.25rem;
 }
 
@@ -2762,12 +2762,33 @@ table tr:nth-child(even) {
   margin-bottom: 0;
 }
 
+.widget_nav_menu .menu a {
+  font-weight: 400;
+  padding: 0.4375rem 0;
+  text-transform: none;
+}
+
 .widget_nav_menu .menu > .menu-item {
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .widget_nav_menu .menu > .menu-item > a {
-  padding: 10px 0;
+  font-weight: 700;
+  padding: 0.625rem 1.875rem 0.625rem 0;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.widget_nav_menu .menu > .menu-item > a:after {
+  content: "";
+  font-family: "FontAwesome";
+  font-size: 0.625rem;
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .widget_nav_menu a {
@@ -2783,7 +2804,12 @@ table tr:nth-child(even) {
 }
 
 .widget .hours-of-operation {
+  table-layout: fixed;
   width: 100%;
+}
+
+.widget .hours-of-operation__day {
+  width: 6.375rem;
 }
 
 .site-footer {
@@ -2792,27 +2818,8 @@ table tr:nth-child(even) {
   padding: 1.875rem 0;
 }
 
-.site-footer__flex {
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-}
-
 .site-footer__copy > :last-child {
   margin-bottom: 0;
-}
-
-.site-footer__social {
-  -webkit-justify-content: flex-end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
 }
 
 .site-footer .social {
@@ -2838,6 +2845,66 @@ table tr:nth-child(even) {
 
 .site-footer .social__link {
   margin-left: 0.5rem;
+}
+
+@media (min-width: 68.8125em) {
+  .site-footer__flex {
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 100%;
+  }
+  .site-footer__social {
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (max-width: 68.75em) {
+  .site-footer__flex {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .site-footer__copy, .site-footer__social {
+    width: 100%;
+  }
+  .site-footer__copy + .site-footer__social {
+    padding-bottom: 1.875rem;
+  }
+  .site-footer__copy {
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2;
+    text-align: center;
+  }
+  .site-footer__social {
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .site-footer .social {
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (max-width: 40em) {
+  .site-footer {
+    font-size: 0.875rem;
+  }
 }
 
 .site-header {
