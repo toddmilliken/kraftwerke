@@ -2947,6 +2947,10 @@ table tr:nth-child(even) {
 
 .site-header__left {
   border-right: 1px solid #dadada;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
 .site-header__right {
