@@ -12,7 +12,7 @@
  
 $post_id  = get_the_id();
 $masthead_attachment_id = get_post_meta( $post_id, 'int_masthead_image', true );
-
+$has_breadcrumbs = kwer_has_breadcrumbs($post->ID);
 if ( !$masthead_attachment_id && ($ancestors = get_post_ancestors($post_id)) ) :
 	
 	foreach ( $ancestors as $a ) :
@@ -32,14 +32,12 @@ $masthead_desktop_url = wp_get_attachment_image_url( $masthead_attachment_id, 'm
 $masthead_mobile_url  = wp_get_attachment_image_url( $masthead_attachment_id, 'masthead-mobile' );
 ?>
 
-<section class="masthead">
+<section class="masthead<?php echo ( $has_breadcrumbs ? ' masthead--has-breadcrumbs' : ''); ?>">
 	<div class="masthead__flex-parent">
 		<div class="masthead__flex-child inner">
 			<?php get_template_part('partials/page-header'); ?>
-			<?php if ( function_exists('yoast_breadcrumb') ) : ?>
-				<div class="masthead__breadcrumbs">
-					<?php yoast_breadcrumb('<div class="breadcrumbs">','</div>'); ?>
-				</div>
+			<?php if ( function_exists('yoast_breadcrumb') && $has_breadcrumbs ) : ?>
+				<?php yoast_breadcrumb('<div class="masthead__breadcrumbs"><div class="breadcrumbs">','</div></div>'); ?>
 			<?php endif; ?>
 		</div>
 	</div>

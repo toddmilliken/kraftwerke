@@ -23,12 +23,12 @@
 	
 	&__flex-child ,
 	&__flex-child.inner {		
-		padding-top: rem($siteheader-height + 30);
-		padding-bottom: rem(20);
+		padding-top: rem($siteheader-height + 40);
+		padding-bottom: rem(40);
 	}
 	
 	&__breadcrumbs {
-		margin-top: rem(30);
+		margin-top: rem(16);
 		
 		a {
 			color: white;
@@ -51,14 +51,6 @@
 		
 		// IE Fix so we can add a min-height to flex-child
 		// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
-		&__flex-parent {
-			display: flex;
-			flex-direction: row;
-			width: 100%;
-		}
-		
-		// IE Fix so we can add a min-height to flex-child
-		// @ref https://codepen.io/chriswrightdesign/pen/emQNGZ/
 		&__flex-child ,
 		&__flex-child.inner {
 			align-items: center;
@@ -66,7 +58,7 @@
 			flex: 1 1 auto;
 			flex-direction: column;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			justify-content: center;
 			min-height: rem(480 - $siteheader-height);
 			max-width: rem($width-center) !important;
 			padding: rem(20) rem(20);
@@ -76,7 +68,6 @@
 			
 		.page-header-wrapper ,
 		&__breadcrumbs {
-			margin-top: auto;
 			width: 100%;
 		}
 			
@@ -84,7 +75,19 @@
 			padding-top: rem(30);
 			padding-bottom: rem(30);
 		}
-	
+		
+		&--has-breadcrumbs {
+			
+			.masthead__flex-child {
+				justify-content: space-between;
+			}
+		
+			.page-header-wrapper ,
+			.masthead__breadcrumbs {
+				margin-top: auto;
+			}
+		
+		}
 	}
 
 	
