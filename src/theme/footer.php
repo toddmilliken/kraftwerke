@@ -10,7 +10,7 @@
 ?>
 		<footer class="site-footer">
 			<div class="inner">
-				<div class="site-footer__flex">		
+				<div class="site-footer__flex">
 					<?php if ( $footer_copy = get_option('options_opts_footer') ) : ?>
 						<div class="site-footer__copy"><?php echo apply_filters( 'the_content', $footer_copy ); ?></div>
 					<?php endif; ?>

@@ -15,21 +15,33 @@
  *
  * @since  1.0.0
  */
-function isc_yoast_breadcrumb_output( $output )
+function kwer_yoast_breadcrumb_output( $output )
 {	
 	// Return false if this is the resources overview && its top-level. 
 	global $post;
 	
 	// Return false if top level
-	if ( empty( get_post_ancestors($post) ) ) {
+	if ( ! kwer_has_breadcrumbs($post->ID) ) {
 		return false;
 	}
 	
 	return $output;
 }
-add_filter( 'wpseo_breadcrumb_output', 'isc_yoast_breadcrumb_output' );
+add_filter( 'wpseo_breadcrumb_output', 'kwer_yoast_breadcrumb_output' );
 
-
+function kwer_has_breadcrumbs( $post_id ) {
+	
+	if ( ! $post_id ) {
+		$post_id = get_the_id();
+	}
+	
+	if ( empty( get_post_ancestors($post_id) ) && !is_singular('post') && !is_category() && !is_tag() && !is_date() ) {
+		return false;
+	} else {
+		return true;
+	}
+	
+}
 
 /**
  * Filters the post breadcrumb trail. 

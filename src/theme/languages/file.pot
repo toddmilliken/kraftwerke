@@ -13,6 +13,10 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: src/theme/footer.php:18, src/theme/partials/site-navigation.php:3
+msgid "Follow Us"
+msgstr ""
+
 #: src/theme/header.php:50
 msgid "Phone"
 msgstr ""
@@ -67,8 +71,4 @@ msgstr ""
 
 #: src/theme/partials/site-navigation.php:2
 msgid "Close"
-msgstr ""
-
-#: src/theme/partials/site-navigation.php:3
-msgid "Follow Us"
 msgstr ""
