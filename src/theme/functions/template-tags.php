@@ -107,7 +107,7 @@ function kwer_main_open( $args = array() ) {
  * The closing HTML for the default template, enclosing the default content w/ sidebar layer
  * and the "main" element that wraps all content between header and footer.
  * 
- * @since 1.0.0
+ * @since    1.0.0
  */
 function kwer_main_close( $args = array() ) {
 		
@@ -154,7 +154,15 @@ function kwer_main_close( $args = array() ) {
 }
 
 
-
+/**
+ * Override base theme social media
+ *
+ * Adds different markup than base social linka.
+ *
+ *
+ * @param    array     $args
+ * @echo/@return   string    $html
+ */
 function base_social( $args = array() ) {
 	
 	/** Validates social media */
@@ -264,3 +272,127 @@ function base_social( $args = array() ) {
 	endif;
 
 }
+
+/**
+ * Array of post's meta information
+ * 
+ * @since    1.0.0
+ *
+ * @param    int     $post_id     ID of post to retrieve meta from.
+ * @return   array   $meta
+ */
+function kwer_post_meta( $post_id = false ) {
+	
+	if ( ! $post_id ) {
+		$post_id = get_the_id();
+	}
+	
+	$meta = array();
+	switch ( get_post_type( $post_id ) ) {
+		case 'post' :
+		default :
+			
+			// Date
+			$meta[] = '<time datetime="' . get_the_date( 'Y-m-d H:i', $post_id ) . '">' . get_the_date( 'm.d.y', $post_id ) . '</time>';
+			
+			// Author
+			$author_id = get_post_field( 'post_author', $post_id );
+			$meta[] = '<a href="' . get_author_posts_url( $author_id ) . '">' . get_the_author_meta( 'display_name',  $author_id ) . '</a>';
+
+	}
+	
+	return $meta;
+
+}
+
+/**
+ * Array of post's term links
+ * 
+ * @since    1.0.0
+ */
+function kwer_term_links( $post_id = false ) {
+	
+	if ( ! $post_id ) {
+		$post_id = get_the_id();
+	}
+	
+	$term_links = array();
+	switch ( get_post_type( $post_id ) ) {
+		case 'post' :
+		default :
+		
+			// Get post categories
+			$categories = get_the_category( $post_id );
+			if ( !empty($categories) && !is_wp_error($categories) ) {
+				foreach ( $categories as $cat ) {
+					$term_links[] = '<a href="' . get_category_link( $cat ) . '">' . $cat->name . '</a>';
+				}
+			}
+			
+	}
+	
+	return $term_links;
+	
+}
+
+/**
+ * Theme listings style
+ *
+ * Displays post using the theme's post listings style.
+ * 
+ * @since    1.0.0
+ */
+function kwer_media_block( $args = array() ) {
+
+	/** Default arguments */
+	$default_args = array(
+		'title'       => false ,
+		'excerpt'     => false ,
+		'img_id'      => false , 
+		'link_target' => '_self' ,
+		'link_text'   => 'Read More' ,
+		'link_url'    => false ,
+		'echo'        => true
+	);
+	
+	/** Merge passed arguments with defaults */
+	$args = wp_parse_args( $args, $default_args );
+	 
+	$html  = '<div class="block-media">';
+		
+		// Image	
+		if ( $attachment_id = $args['img_id'] ) {
+			$img        = wp_get_attachment_image_src( $attachment_id, 'medium' );
+			$img_alt    = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+			$img_height = $img[1];
+			$img_src    = $img[0];
+			$img_width  = $img[2];
+			$html .= '
+				<div class="block-media__media block-media__media--left">
+					<picture>
+						<img data-original="' . $img_src . '" alt="' . $img_alt . '" width="' . $img_width . '" height="' . $img_height . '" />
+					</picture>
+				</div>
+			';
+		}
+	 
+	$html .= '
+		<div class="block-media__body">' . 
+			( $args['title'] ? '<h3 class="block-media__title">' . $args['title'] . '</h3>' : '' ) . 
+			( $args['excerpt'] ? '<div class="block-media__excerpt">' . $args['excerpt'] . '</div>' : '' ) .
+			( $args['link_url'] ? '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '" class="block-media__link more">' . $args['link_text'] . '</a>' : '' ) . '
+		</div>
+	';
+	$html .= '</div>';
+	
+	
+	if ( $args['echo'] ) {
+		echo $html;
+	} else {
+		return $html;
+	}	
+	
+}
+
+
+

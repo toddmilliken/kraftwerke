@@ -11,6 +11,10 @@ $title_props = base_page_title( array('echo' => false ) );
 $title       = isset( $title_props['title'] ) ? $title_props['title'] : get_the_title( $post_id );
 $subtitle    = get_post_meta( $post_id, 'int_page_subtitle', true );
 
+if ( is_home() ) {
+	$subtitle = get_post_meta( get_option('page_for_posts') , 'int_page_subtitle', true ); 
+}
+
 ?>
 <div class="page-header-wrapper">
 	<div class="page-header">

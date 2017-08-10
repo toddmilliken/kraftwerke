@@ -45,6 +45,17 @@
 	}
 }
 
+@mixin inner-narrow-up {
+	@media (min-width: #{em($width-center-narrow + 41) }) {
+		@content;
+	}
+}
+
+@mixin inner-narrow-down {
+	@media (max-width: #{em($width-center-narrow + 40) }) {
+		@content;
+	}
+}
 
 // Tablet Landscape
 @mixin tablet-landscape-up {

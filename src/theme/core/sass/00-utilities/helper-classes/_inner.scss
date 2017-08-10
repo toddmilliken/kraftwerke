@@ -1,5 +1,6 @@
 /* Used to define how wide your main content should be at viewport widths */
-.inner {
+.inner ,
+.inner-narrow {
 	padding: 0 rem(20);
 	position: relative;
 
@@ -9,6 +10,19 @@
 	
 }
 
+.inner .inner-narrow {
+	padding: 0;
+}
+
+@include inner-narrow-up {
+	
+	.inner-narrow {		
+		margin: 0 auto;
+		padding: 0;
+		width: rem($width-center-narrow);
+	}
+	
+}
 
 @include inner-up {
 	

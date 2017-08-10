@@ -195,13 +195,27 @@ table {
 }
 
 /* Used to define how wide your main content should be at viewport widths */
-.inner {
+.inner,
+.inner-narrow {
   padding: 0 1.25rem;
   position: relative;
 }
 
-.inner--static {
+.inner--static,
+.inner-narrow--static {
   position: static;
+}
+
+.inner .inner-narrow {
+  padding: 0;
+}
+
+@media (min-width: 50.0625em) {
+  .inner-narrow {
+    margin: 0 auto;
+    padding: 0;
+    width: 47.5rem;
+  }
 }
 
 @media (min-width: 76.3125em) {
@@ -1280,6 +1294,7 @@ body {
   font-weight: 700;
   border-bottom: 1px solid #42ab9e;
   color: #42ab9e;
+  display: inline-block;
   font-size: 0.875rem;
   letter-spacing: .03em;
   position: relative;
@@ -1319,9 +1334,8 @@ body {
   display: inline-block;
   font-family: "FontAwesome";
   font-size: 0.625rem;
-  margin-top: 0.3125rem;
   margin-left: 0.625rem;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 label {
@@ -1939,7 +1953,7 @@ pre {
 }
 
 .block-media {
-  margin-bottom: 1.875rem;
+  margin-bottom: 2.5rem;
 }
 
 .block-media__link-wrapper {
@@ -1967,6 +1981,15 @@ pre {
 .block-media__media iframe {
   height: auto;
   width: 100%;
+}
+
+.block-media__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.block-media__body p {
+  margin-bottom: 0.5rem;
 }
 
 /** Floats media to the left, prevents content from wrapping underneath */

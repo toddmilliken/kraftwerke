@@ -29,7 +29,10 @@ require 'functions/setup.php';
 // Theme Shortcodes
 require 'functions/shortcodes.php';
 
-// Theme template tags
+// Template hooks
+require 'functions/template-hooks.php';
+
+// Template tags
 require 'functions/template-tags.php';
 
 // Widgets
