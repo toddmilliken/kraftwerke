@@ -1780,7 +1780,14 @@ mark {
 ul,
 ol {
   margin: 0 0 1.875rem;
-  padding: 0 0 0 1.25rem;
+  padding: 0;
+}
+
+@media (min-width: 40.0625em) {
+  ul,
+  ol {
+    padding: 0 0 0 1.25rem;
+  }
 }
 
 ul ul,

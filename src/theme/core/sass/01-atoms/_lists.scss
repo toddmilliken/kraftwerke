@@ -1,7 +1,11 @@
 ul,
 ol {
 	margin: 0 0 rem($margin-bottom);
-	padding: 0 0 0 rem(20);
+	padding: 0;
+	
+	@include smartphone-up {
+		padding: 0 0 0 rem(20);
+	}
 	
 	// prevents compounded padding in nested lists
 	ul ,
