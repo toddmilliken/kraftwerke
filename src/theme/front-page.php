@@ -35,7 +35,7 @@ $partial_dir = 'partials/front-page/';
 /** Header */
 get_header(); 
 
-get_template_part($partial_dir . 'panel');	
+get_template_part($partial_dir . 'panels');	
 get_template_part($partial_dir . 'spotlight');
 get_template_part($partial_dir . 'overview');	
 get_template_part($partial_dir . 'about');	
