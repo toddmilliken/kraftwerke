@@ -17,11 +17,15 @@
  */
 function kwer_pre_get_posts( $query ) {
 
-	// Modify search results to exclue posts defined in Options. 
-	if ( !is_admin() && $query->is_main_query() && $query->is_search() ) {
+	if ( !is_admin() && $query->is_main_query() ) {
 		
-		if ( $opts_exclude_ids = get_option( 'options_opts_exclude_posts' ) ) {
-			$query->set( 'post__not_in', $opts_exclude_ids );	
+		// Modify search results to exclue posts defined in Options. 		
+		if ( $query->is_search() ) {
+		
+			if ( $opts_exclude_ids = get_option( 'options_opts_exclude_posts' ) ) {
+				$query->set( 'post__not_in', $opts_exclude_ids );	
+			}
+			
 		}
 		
 	};

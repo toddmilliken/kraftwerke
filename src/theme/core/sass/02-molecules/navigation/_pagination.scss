@@ -1,10 +1,15 @@
 .pagination {
-	border-top: 1px solid theme-color("gray");
+	border-top: 1px solid theme-color("gray", "lighter");
 	color: theme-color("gray");
-	font-weight: 700;
+	font-weight: 600;
 	margin-top: rem(30);
 	padding: rem(30) 0;
 	text-align: center;
+	text-transform: uppercase;
+	
+	a {
+		text-decoration: none;
+	}
 	
 	a ,
 	span {

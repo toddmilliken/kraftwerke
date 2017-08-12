@@ -16,6 +16,7 @@
 // 2) Molecules - Combinations of atoms
 @import "02-molecules/*";
 @import "02-molecules/blocks/*";
+@import "02-molecules/forms/*";
 @import "02-molecules/layout/*";
 @import "02-molecules/media/*";
 @import "02-molecules/navigation/*";
@@ -29,7 +30,4 @@
 @import "03-organisms/sections/*";
 
 // 4) Templates - Layouts using atoms, molecules, and organisms
-/*
-@import "04-templates/index/*";
-@import "04-templates/front-page/*";
-*/
+@import "04-templates/*";

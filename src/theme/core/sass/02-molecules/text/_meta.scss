@@ -1,12 +1,23 @@
 .meta {
 	@include clearfix;
+	color: theme-color("gray");
 	font-size: rem(14);
 	font-weight: 700;
 	margin-bottom: rem(10);
+	padding-left: 0;
 	text-transform: uppercase;	
 	
+	a {
+		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+		
+	}
+	
 	li {
-		float: left;
+		display: inline-block;
 		margin-right: rem(30);
 		padding-bottom: 0;
 		padding-left: 0;

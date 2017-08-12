@@ -65,6 +65,10 @@ button {
 	outline: none;
 }
 
+.required {
+	color: $form-required;
+}
+
 
 //---
 // SELECTOR - .selector wrapper added dynamically via javascript

@@ -13,6 +13,18 @@ h6 {
 	font-size-adjust: .5;
 }
 
+h1 ,
+h2 ,
+h3 ,
+h4 ,
+h5 ,
+h6 ,
+p {
+	hyphens: auto;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
 /* Body Content */
 .outer-wrapper {
 	font-size: 1em;

@@ -41,6 +41,18 @@
 		background: linear-gradient(rgba(white, 0), white);
 	}
 	
+	&--16-9 {
+		@include aspect-ratio(16, 9);
+	}
+	
+	&--rounded {
+		border-radius: rem($border-radius);
+	}
+	
+	&--margin-bottom {
+		margin-bottom: rem(30);
+	}
+	
 	// background image (usually img tag inside .layer__img-frame )
 	//.layer__bg-img {
 	&__media {

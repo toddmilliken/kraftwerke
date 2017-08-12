@@ -34,6 +34,21 @@
 	&__title {
 		font-size: rem(20);
 		margin-bottom: rem(8);
+		
+		+ .meta {
+			padding-top: rem(6);
+		}
+		
+		a {
+			color: inherit;
+			text-decoration: none;
+			
+			&:hover {
+				color: $primary-color;
+			}
+			
+		}
+		
 	}
 	
 	&__body {
@@ -42,6 +57,10 @@
 			margin-bottom: rem(8);
 		}
 		
+	}
+	
+	&__tags {
+		padding-top: rem(16);
 	}
 	
 }
@@ -54,12 +73,21 @@
 	.block-media {
 		@include clearfix;
 		
-		&__media--left {
-			float: left;
-			margin-right: rem(40);
+		&__media--left ,
+		&__media--right {
+			max-width: 30%;
 			width: rem(220);
 		}
 		
+		&__media--left {
+			float: left;
+			margin-right: rem(40);
+		}
+		
+		&__media--right {
+			float: right;
+			margin-left: rem(40);
+		}
 		
 		&__media + &__body {
 			overflow: hidden;

@@ -1,0 +1,24 @@
+@media screen and ( min-width: #{em(700)} ) {	
+	
+	.content-posts {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		
+		.block-card {
+			width: 49%;
+			
+			&--lg ,
+			&--sticky {
+				width: 100%;
+			}
+			
+			&--sticky {
+				background-color: lighten( $primary-color, 50% );
+			}
+			
+		}
+		
+	}
+	
+}

@@ -274,6 +274,35 @@ function base_social( $args = array() ) {
 }
 
 /**
+ * Get image parts by attachment ID.
+ * 
+ * @since    1.0.0
+ *
+ * @return   array    $image     Contains image src, alt, width, and height
+ */
+function get_kwer_image( $attachment_id = null, $size = 'medium' ) {
+	
+	if ( ! $attachment_id ) {
+		if ( $current_attachment_id = wp_get_attachment_image_src( get_post_thumbnail_id(), $size ) ) {
+			$attachment_id = $current_attachment_id;
+		} else {
+			return false;
+		}
+	}
+	
+	$image           = array();
+	$image['alt']    = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
+	
+	$attachment      = wp_get_attachment_image_src( $attachment_id, $size );
+	$image['src']    = $attachment[0];
+	$image['width']  = $attachment[1];
+	$image['height'] = $attachment[2];
+	
+	return $image;
+	
+}
+
+/**
  * Array of post's meta information
  * 
  * @since    1.0.0
@@ -292,13 +321,16 @@ function kwer_post_meta( $post_id = false ) {
 		case 'post' :
 		default :
 			
-			// Date
-			$meta[] = '<time datetime="' . get_the_date( 'Y-m-d H:i', $post_id ) . '">' . get_the_date( 'm.d.y', $post_id ) . '</time>';
-			
 			// Author
 			$author_id = get_post_field( 'post_author', $post_id );
-			$meta[] = '<a href="' . get_author_posts_url( $author_id ) . '">' . get_the_author_meta( 'display_name',  $author_id ) . '</a>';
-
+			$meta[] = __( 'by', 'kraftwerke' ) . ': ' . '<a href="' . get_author_posts_url( $author_id ) . '">' . get_the_author_meta( 'display_name',  $author_id ) . '</a>';
+			
+			// Category
+			$category_links = kwer_term_links( $post_id );
+			$meta[] = implode(', ', $category_links);
+	
+			// Date
+			$meta[] = '<time datetime="' . get_the_date( 'Y-m-d H:i', $post_id ) . '">' . get_the_date( 'm.d.y', $post_id ) . '</time>';
 	}
 	
 	return $meta;
@@ -342,16 +374,18 @@ function kwer_term_links( $post_id = false ) {
  * 
  * @since    1.0.0
  */
-function kwer_media_block( $args = array() ) {
+function kwer_block_media( $args = array() ) {
 
 	/** Default arguments */
 	$default_args = array(
 		'title'       => false ,
 		'excerpt'     => false ,
-		'img_id'      => false , 
+		'img_id'      => false ,
+		'meta'        => array() , 
 		'link_target' => '_self' ,
 		'link_text'   => 'Read More' ,
 		'link_url'    => false ,
+		'tags'        => array() , 
 		'echo'        => true
 	);
 	
@@ -375,14 +409,45 @@ function kwer_media_block( $args = array() ) {
 				</div>
 			';
 		}
-	 
-	$html .= '
-		<div class="block-media__body">' . 
-			( $args['title'] ? '<h3 class="block-media__title">' . $args['title'] . '</h3>' : '' ) . 
-			( $args['excerpt'] ? '<div class="block-media__excerpt">' . $args['excerpt'] . '</div>' : '' ) .
-			( $args['link_url'] ? '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '" class="block-media__link more">' . $args['link_text'] . '</a>' : '' ) . '
-		</div>
-	';
+		
+		// Meta 
+		$meta_html = false;
+		if ( ! empty($args['meta']) && is_array($args['meta']) ) {
+			$meta_html = '<ul class="meta">';
+			foreach ( $args['meta'] as $meta_item ) {
+				$meta_html .= '<li>' . $meta_item . '</li>';
+			}
+			$meta_html .= '</ul>';
+		}
+		
+		// Tags
+		$tags_html = false;
+		if ( ! empty($args['tags']) && is_array($args['tags']) ) {
+			$tags_html = '<div class="block-media__tags tags-list meta">' . __( 'Tags', 'kraftwerke' ) . ': ' . implode(', ', $args['tags'] ) . '</div>';
+		}
+		
+		$html .= '
+			<div class="block-media__body">';
+				if ( $args['title'] ) {
+					$html .= '<h3 class="block-media__title">';
+					if ( $args['link_url'] ) {
+						$html .= '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '">';
+					}
+					$html .= $args['title'];
+					if ( $args['link_url'] ) {
+						$html .= '</a>';	
+					}
+					$html .= '</h3>';
+				}
+				if ( $meta_html ) {
+					$html .= $meta_html;
+				}
+				$html .= ( $args['excerpt'] ? '<div class="block-media__excerpt">' . $args['excerpt'] . '</div>' : '' ) .
+				( $args['link_url'] ? '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '" class="block-media__link more">' . $args['link_text'] . '</a>' : '' ) . 
+				( $tags_html ? $tags_html : '' ) . '
+			</div>
+		';
+
 	$html .= '</div>';
 	
 	
@@ -396,3 +461,224 @@ function kwer_media_block( $args = array() ) {
 
 
 
+/**
+ * Theme card style
+ *
+ * Displays post using the theme's post card style.
+ * 
+ * @since    1.0.0
+ */
+function kwer_block_card( $args = array() ) {
+
+	/** Default arguments */
+	$default_args = array(
+		'classes'     => array() , // modifier class
+		'echo'        => true ,
+		'excerpt'     => false ,
+		'img_id'      => false ,
+		'link_target' => '_self' ,
+		'link_text'   => 'Read More' ,
+		'link_url'    => false ,
+		'meta'        => array() , 
+		'tags'        => array() , 
+		'title'       => false ,
+	);
+	
+	/** Merge passed arguments with defaults */
+	$args = wp_parse_args( $args, $default_args );
+	
+	// Title
+	$title_html = false;
+	if ( $title = $args['title'] ) {
+		$title_html .= '<h3 class="block-card__title">';
+		if ( $args['link_url'] ) {
+			$title_html .= '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '">';
+		}
+		$title_html .= $title;
+		if ( $args['link_url'] ) {
+			$title_html .= '</a>';	
+		}
+		$title_html .= '</h3>';
+	}
+	
+	// Image
+	$image_html = false;	
+	if ( $attachment_id = $args['img_id'] ) {
+		$img = get_kwer_image( $attachment_id );
+		$image_html .= '
+			<div class="block-card__media frame frame--16-9">
+				<picture>
+					<img class="frame__media" data-original="' . $img['src'] . '" alt="' . $img['alt'] . '" width="' . $img['width'] . '" height="' . $img['height'] . '" />
+				</picture>
+			</div>
+		';
+	}
+	
+	// Meta 
+	$meta_html = false;
+	if ( ! empty($args['meta']) && is_array($args['meta']) ) {
+		$meta_html = '<ul class="meta">';
+		foreach ( $args['meta'] as $meta_item ) {
+			$meta_html .= '<li>' . $meta_item . '</li>';
+		}
+		$meta_html .= '</ul>';
+	}
+	
+	// Tags
+	$tags_html = false;
+	if ( ! empty($args['tags']) && is_array($args['tags']) ) {
+		$tags_html = '<div class="block-card__tags tags-list meta">' . __( 'Tags', 'kraftwerke' ) . ': ' . implode(', ', $args['tags'] ) . '</div>';
+	}
+	 
+	$html  = '
+		<div class="block-card' . ( !empty($args['classes']) ? ' ' . implode(' ', $args['classes']) : '' ) . '">' . 
+			( $image_html ? $image_html : '' ) . '
+			<div class="block-card__body">' . 
+				( $title_html ? $title_html : '' ) .
+				( $meta_html ? $meta_html : '' ) .
+				( $args['excerpt'] ? '<div class="block-card__excerpt">' . $args['excerpt'] . '</div>' : '' ) .
+				( $args['link_url'] ? '<a href="' . esc_url( $args['link_url'] ) . '" target="' . esc_attr( $args['link_target'] ) . '" class="block-card__link more">' . $args['link_text'] . '</a>' : '' ) . 
+				( $tags_html ? $tags_html : '' ) . '
+			</div>
+		';
+
+	$html .= '</div>';
+	
+	
+	if ( $args['echo'] ) {
+		echo $html;
+	} else {
+		return $html;
+	}	
+	
+}
+
+
+
+
+
+
+/**
+ * Theme pagination 
+ *
+ * @since    1.0.0
+ *
+ * @link     https://codex.wordpress.org/Function_Reference/paginate_links
+ *
+ * @global   object    $wp_query    Optionally called if no arguments are passed. Calculates the math 
+ *                                  needed to display right amount of pagination links.
+ *
+ * @param    array     $args {
+ *           Optional. An array of arguments. Defaults to global $wp_query object if none supplied
+ *
+ *           @type     boolean      $echo          Prints the result instead of returning for use in PHP
+ *
+ *           @type     boolean      $total_pages   The total number of pages in a given query. 
+ *                                                 NOTE: can be calculated by: `ceil( $wp_query->found_posts / $wp_query->query_vars['posts_per_page'] );`
+ *
+ *           @type     boolean      $current       The current page being requested. 
+ *                                                 Defaults to get_query_var('paged')
+ * }
+ *
+ * @return   string    $html        Defaults to return. Echo if $echo argument is set to true. 
+ */
+function kwer_pagination( $args = array() ) {
+	
+	/** Default arguments */
+	$default_args = array(
+		'echo'        => false ,
+		'total_pages' => false ,
+		'current'     => false 
+	);
+	
+	/** Merge passed arguments with defaults */
+	$args = (object) wp_parse_args( $args, $default_args );
+	
+	/** If no args passed to this function, get the global $wp_query object to calculate values */
+	if ( ! $args->total_pages || ! $args->current ) {
+		global $wp_query;
+		
+		if ( ! $args->total_pages ) {
+			$args->total_pages = $wp_query->max_num_pages;
+		}
+		
+		if ( ! $args->current ) {
+			$args->current = get_query_var('paged') ? get_query_var('paged') : 1;
+		}
+	}
+	
+	/** A really high number unlikely to be reached */
+	$big = 999999999;
+	
+	/** Declares arguments for WP function paginate_links(). */
+	$pagi_args = array(
+		'base'               => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+		'format'             => '/page/%#%/',
+		'total'              => $args->total_pages,
+		'current'            => $args->current,
+		'show_all'           => false,
+		'end_size'           => 1,
+		'mid_size'           => 5,
+		'prev_next'          => true,
+		'prev_text'          => __('<i class="fa fa-angle-left" aria-hidden="true"></i>'),
+		'next_text'          => __('<i class="fa fa-angle-right" aria-hidden="true"></i>'),
+		'add_args'           => false,
+		'add_fragment'       => '',
+		'before_page_number' => '',
+		'after_page_number'  => '',
+	);
+	
+	/** Call pagination_links and store the resulting string of HTML */
+	$pagination_html = paginate_links( $pagi_args );
+	
+	/** Adds a container to wrap the pagination HTML. Useful for styling */
+	$html = '';
+	if ( !empty($pagination_html) ) {
+		$html = '<div class="pagination">' . $pagination_html . '</div>';	
+	}
+
+	/** Echo or return the result */
+	if ( $args->echo ) {
+		echo $html; 
+	} else {
+		return $html;
+	}
+	
+}
+
+
+
+/**
+ * Author Bio
+ *
+ * Overwrites em-base function
+ * 
+ * @since    1.0.0
+ *
+ * @return   string   $html	
+ */ 
+function kwer_author_bio()
+{	
+	$author_id =  get_the_author_meta( 'ID' );
+	$bio = apply_filters( 'the_excerpt', get_the_author_meta( 'description', $author_id ) );
+	
+	if ( ! empty($bio) ) {
+	
+		/** Output the author information using .block-media format. */
+		$html = '<div class="block-media">';
+			if ( $author_thumbnail = get_field('usr_avatar', 'user_' . $author_id) ) {
+				$html .= '<div class="block-media__media block-media__media--left">';
+					$html .= '<img data-original="' . $author_thumbnail['sizes']['thumbnail'] . '" alt="' . $author_thumbnail['alt'] . '" />';
+				$html .= '</div>';
+			}
+			$html .= '<div class="block-media__body">';
+				$html .= '<h3 class="block-media__title">' . get_the_author()  . '</h3>';
+				$html .= $bio;
+			$html .= '</div>';
+		$html .= '</div>';
+		
+		echo $html;
+		
+	}
+
+} 
