@@ -11,7 +11,7 @@
 
 if ( have_posts() ) {
 ?>
-	<div class="content-posts">
+	<div class="content-posts<?php echo ( !is_search() ? ' content-posts--flex' : '' ); ?>">
 <?php
 	while ( have_posts() ) : the_post();
 		

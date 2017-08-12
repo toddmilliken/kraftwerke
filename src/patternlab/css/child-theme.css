@@ -3693,7 +3693,7 @@ table tr:nth-child(even) {
 }
 
 @media screen and (min-width: 43.75em) {
-  .content-posts {
+  .content-posts--flex {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -3704,13 +3704,13 @@ table tr:nth-child(even) {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .content-posts .block-card {
+  .content-posts--flex .block-card {
     width: 49%;
   }
-  .content-posts .block-card--lg, .content-posts .block-card--sticky {
+  .content-posts--flex .block-card--lg, .content-posts--flex .block-card--sticky {
     width: 100%;
   }
-  .content-posts .block-card--sticky {
+  .content-posts--flex .block-card--sticky {
     background-color: #f2faf9;
   }
 }

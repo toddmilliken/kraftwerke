@@ -666,7 +666,7 @@ function kwer_author_bio()
 	
 		/** Output the author information using .block-media format. */
 		$html = '<div class="block-media">';
-			if ( $author_thumbnail = get_field('usr_avatar', 'user_' . $author_id) ) {
+			if ( $author_thumbnail = get_field('user_thumbnail', 'user_' . $author_id) ) {
 				$html .= '<div class="block-media__media block-media__media--left">';
 					$html .= '<img data-original="' . $author_thumbnail['sizes']['thumbnail'] . '" alt="' . $author_thumbnail['alt'] . '" />';
 				$html .= '</div>';
