@@ -1,0 +1,12 @@
+.main {
+	position: relative;
+	
+	&--header-offset {
+		padding-top: rem($siteheader-height);
+	}
+	
+	&--fullscreen {
+		min-height: 100vh;
+	}
+	
+}

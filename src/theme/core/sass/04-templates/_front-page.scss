@@ -1,0 +1,18 @@
+// sass-lint:disable no-qualifying-elements
+
+html.front-page ,
+body.front-page {
+	height: 100%;
+	
+	.outer-wrapper ,
+	.site-wrapper ,
+	.main ,
+	.panels ,
+	.panel-slides ,
+	.panel-slide {
+		height: 100%;
+	}
+	
+}
+
+// sass-lint:enable no-qualifying-elements

@@ -69,6 +69,14 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
+#: src/theme/functions/template-tags.php:326
+msgid "by"
+msgstr ""
+
+#: src/theme/functions/template-tags.php:426, src/theme/functions/template-tags.php:530, src/theme/partials/content-post.php:49
+msgid "Tags"
+msgstr ""
+
 #: src/theme/partials/site-navigation.php:2
 msgid "Close"
 msgstr ""
