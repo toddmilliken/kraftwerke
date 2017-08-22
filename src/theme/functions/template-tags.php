@@ -682,3 +682,47 @@ function kwer_author_bio()
 	}
 
 } 
+
+/**
+ * Header phone number
+ *
+ * @since    1.0.0
+ */
+function kwer_header_phone() {
+	
+	if ( $phone = get_option('options_opts_phone') ) : 
+?>
+		<div class="header-phone"><strong><?php _e('Phone', 'kraftwerke'); ?></strong>: <?php echo $phone; ?></div>
+<?php 
+	endif; 
+	
+}
+
+/**
+ * Header phone number
+ *
+ * @since    1.0.0
+ */
+function kwer_header_cta() {
+	
+	if ( $header_cta = get_option('options_opts_is_header_cta') ) :
+		$link_target = '_self';
+		$link_text   = get_option('options_opts_header_cta_text');
+		$link_url    = false;
+		switch ( get_option('options_opts_header_cta_link_type') ) {
+			case 'internal' :
+				$internal_post_id = get_option('options_opts_header_cta_link_internal');
+				$link_url = !empty($internal_post_id) ? get_permalink($internal_post_id) : false;
+				get_option('options_opts_header_cta_link_internal');
+				break;
+			case 'custom' :
+				$link_target = get_option('options_opts_header_cta_link_target') ? '_blank' : '_self';
+				$link_url = get_option('options_opts_header_cta_link_custom');
+				break;
+		}
+?>
+		<a href="<?php echo esc_url($link_url); ?>" class="header-cta-btn" target="<?php echo esc_attr($link_target); ?>"><?php echo $link_text; ?> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+<?php 
+	endif;
+	
+}

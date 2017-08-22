@@ -21,7 +21,7 @@
 // Messaging
 .panel {
 	color: white;
-	color: rgba(white, .9);
+	color: rgba(white, .75);
 	position: absolute;	
 		top: 0;
 		right: 0;
@@ -57,7 +57,7 @@
 			text-decoration: none;
 			
 			&:hover {
-				color: rgba(white, .75);
+				color: rgba(white, .95);
 			}
 			
 		}

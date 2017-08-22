@@ -1267,6 +1267,7 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
   position: relative;
+  z-index: 1;
 }
 
 .fonts-loaded body {
@@ -3557,7 +3558,7 @@ table tr:nth-child(even) {
 
 .panel {
   color: white;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.75);
   position: absolute;
   top: 0;
   right: 0;
@@ -3604,7 +3605,7 @@ table tr:nth-child(even) {
 }
 
 .panel h1 a:hover {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .panel-slide {
