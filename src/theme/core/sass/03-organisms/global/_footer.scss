@@ -33,6 +33,17 @@
 	
 }
 
+.footer-phone {
+	text-align: center;
+}
+
+@media screen and (min-width: #{em(1201)}) {
+	
+	.footer-phone {
+		display: none;	
+	}
+}
+
 
 @include desktop-menu {
 	

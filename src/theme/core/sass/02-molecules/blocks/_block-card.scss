@@ -5,6 +5,11 @@
 	margin-bottom: rem(30);
 	overflow: hidden;
 	
+	&__link-wrapper {
+		color: inherit;
+		text-decoration: none;
+	}
+	
 	&__media {
 		overflow: hidden;
 		width: 100%;
@@ -12,6 +17,10 @@
 	
 	&__body {
 		padding: rem(30);
+		
+		.block-card__media {
+			margin-bottom: rem(20);
+		}
 		
 		p {
 			margin-bottom: rem(8);

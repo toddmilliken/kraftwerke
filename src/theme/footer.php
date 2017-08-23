@@ -15,6 +15,7 @@
 						<div class="site-footer__copy"><?php echo apply_filters( 'the_content', $footer_copy ); ?></div>
 					<?php endif; ?>
 					<div class="site-footer__social">
+						<?php kwer_footer_phone(); ?>
 						<?php base_social(array('title_text' => __('Follow Us', 'kraftwerke') . ':')); ?>
 					</div>
 				</div>

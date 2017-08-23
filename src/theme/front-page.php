@@ -36,8 +36,7 @@ $partial_dir = 'partials/front-page/';
 get_header(); 
 
 get_template_part($partial_dir . 'panels');	
-get_template_part($partial_dir . 'spotlight');
-get_template_part($partial_dir . 'overview');	
+get_template_part($partial_dir . 'icon-grid');
 get_template_part($partial_dir . 'about');	
 
 /** Footer */

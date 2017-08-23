@@ -1,0 +1,8 @@
+.layer--icon-grid ,
+.layer--icon-grid.layer--front-page {
+	background-color: lighten( $primary-color, 48% );
+}
+
+.grid--icons {
+	padding-top: rem(30);
+}

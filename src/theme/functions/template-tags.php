@@ -699,6 +699,21 @@ function kwer_header_phone() {
 }
 
 /**
+ * Footer phone number
+ *
+ * @since    1.0.0
+ */
+function kwer_footer_phone() {
+	
+	if ( $phone = get_option('options_opts_phone') ) : 
+?>
+		<div class="footer-phone"><p><i class="fa fa-phone"></i> <?php _e('Phone', 'kraftwerke'); ?>: <?php echo $phone; ?></p></div>
+<?php 
+	endif; 
+	
+}
+
+/**
  * Header phone number
  *
  * @since    1.0.0

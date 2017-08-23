@@ -1,3 +1,35 @@
 .layer {
 	padding: rem(60) 0;
+	
+	&--front-page {
+		background-color: white;
+	}
+	
+	&__heading {
+		font-weight: 600;
+		
+		&:after {
+			background-color: $primary-color;
+			content: "";
+			display: block;
+			height: rem(2);
+			margin-top: rem(24);
+			width: rem(90);
+		}
+		
+	}
+	
+	&.text-center &__heading:after {
+		margin-right: auto;
+		margin-left: auto;
+	}
+	
+	@include tablet-landscape-up {
+		
+		&__heading {
+			font-size: rem(42);
+		}
+		
+	}
+	
 }
