@@ -44,7 +44,7 @@ if ( $icon_items = get_post_meta( $post_id, 'icon_layer_items', true ) ) : ?>
 							
 							// Link
 							if ( !empty($icon_item_link_id) ) {
-								$icon_item_html = '<a class="block-icon__link-wrapper" href="' . get_permalink($icon_item_link_id) . '">' . $icon_item_html . '"></a>';
+								$icon_item_html = '<a class="block-icon__link-wrapper" href="' . get_permalink($icon_item_link_id) . '">' . $icon_item_html . '</a>';
 							}
 							
 							// Output
@@ -52,9 +52,22 @@ if ( $icon_items = get_post_meta( $post_id, 'icon_layer_items', true ) ) : ?>
 						?>
 					</div>
 				</div>
+				
 		<?php 
 			endfor; 
 			echo '</div>'; // close the grid
+			
+			// See All Link
+			$icon_grid_link_id   = get_post_meta( $post_id, 'icon_layer_link_internal', true );
+			$icon_grid_link_text = get_post_meta( $post_id, 'icon_layer_link_text', true );
+			
+			if ( !empty($icon_grid_link_id) && !empty($icon_grid_link_text) ) {
+				?>
+				<div class="layer__view-all-link text-center">
+					<a href="<?php echo get_permalink($icon_grid_link_id); ?>" class="more"><?php echo $icon_grid_link_text; ?></a>
+				</div>
+				<?php
+			}
 			
 			
 		?>
