@@ -32,3 +32,15 @@ function kwer_pre_get_posts( $query ) {
 	
 }
 add_action( 'pre_get_posts', 'kwer_pre_get_posts' );
+
+
+
+function kwer_acf_google_map_api( $api ){
+	
+	$api['key'] = get_option('option_opts_google_maps_api_key') ;
+	
+	return $api;
+	
+}
+
+add_filter('acf/fields/google_map/api', 'kwer_acf_google_map_api');
