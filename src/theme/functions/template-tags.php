@@ -476,6 +476,7 @@ function kwer_block_card( $args = array() ) {
 		'echo'        => true ,
 		'excerpt'     => false ,
 		'img_id'      => false ,
+		'img_size'    => 'medium',
 		'link_target' => '_self' ,
 		'link_text'   => 'Read More' ,
 		'link_url'    => false ,
@@ -504,7 +505,7 @@ function kwer_block_card( $args = array() ) {
 	// Image
 	$image_html = false;	
 	if ( $attachment_id = $args['img_id'] ) {
-		$img = get_kwer_image( $attachment_id );
+		$img = get_kwer_image( $attachment_id, $args['img_size'] );
 		$image_html .= '
 			<div class="block-card__media frame frame--16-9">
 				<picture>

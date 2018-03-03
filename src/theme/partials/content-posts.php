@@ -56,6 +56,7 @@ if ( have_posts() ) {
 			// If not the first page, do not add sticky class.
 			if ( is_sticky() && !get_query_var('paged') ) {
 				$args['classes'][] = 'block-card--sticky';
+				$args['img_size'] = 'large';
 			}
 			// Call the card style
 			kwer_block_card( $args );
