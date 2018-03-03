@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Kraftwerke
+# Copyright (C) 2018 Kraftwerke
 # This file is distributed under the same license as the Kraftwerke package.
 msgid ""
 msgstr ""
