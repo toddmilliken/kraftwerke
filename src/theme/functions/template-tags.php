@@ -319,18 +319,21 @@ function kwer_post_meta( $post_id = false ) {
 	$meta = array();
 	switch ( get_post_type( $post_id ) ) {
 		case 'post' :
-		default :
 			
 			// Author
 			$author_id = get_post_field( 'post_author', $post_id );
 			$meta[] = __( 'by', 'kraftwerke' ) . ': ' . '<a href="' . get_author_posts_url( $author_id ) . '">' . get_the_author_meta( 'display_name',  $author_id ) . '</a>';
-			
-			// Category
-			$category_links = kwer_term_links( $post_id );
-			$meta[] = implode(', ', $category_links);
 	
 			// Date
 			$meta[] = '<time datetime="' . get_the_date( 'Y-m-d H:i', $post_id ) . '">' . get_the_date( 'm.d.y', $post_id ) . '</time>';
+			
+		default :
+			
+			// Category
+			$category_links = kwer_term_links( $post_id );
+			if ( ! empty( $category_links ) ) {
+				$meta[] = implode(', ', $category_links);
+			}
 	}
 	
 	return $meta;
