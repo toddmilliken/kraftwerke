@@ -65,15 +65,15 @@ msgstr ""
 msgid "Learn More"
 msgstr ""
 
-#: src/theme/functions/template-tags.php:326
+#: src/theme/functions/template-tags.php:325
 msgid "by"
 msgstr ""
 
-#: src/theme/functions/template-tags.php:426, src/theme/functions/template-tags.php:530, src/theme/partials/content-post.php:49
+#: src/theme/functions/template-tags.php:429, src/theme/functions/template-tags.php:534, src/theme/partials/content-post.php:49
 msgid "Tags"
 msgstr ""
 
-#: src/theme/functions/template-tags.php:695, src/theme/functions/template-tags.php:710
+#: src/theme/functions/template-tags.php:699, src/theme/functions/template-tags.php:714
 msgid "Phone"
 msgstr ""
 

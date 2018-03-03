@@ -95,3 +95,11 @@ function wpcodex_add_excerpt_support_for_pages() {
 	add_post_type_support( 'page', 'excerpt' );
 }
 add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
+
+function base_get_article_header() {
+	return false;
+}
+
+function base_breadcrumbs() {
+	return false;
+}
