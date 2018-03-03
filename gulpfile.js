@@ -577,7 +577,7 @@ gulp.task('patternlab:serve', gulp.series(function() {
  */
 gulp.task('site:serve', gulp.series(function() {
 	browserSync.init({
-		proxy: "kraftwerke.dev", // Rename this to your desired domain name
+		proxy: "kraftwerke1.local", // Rename this to your desired domain name
 		port: 3333
     });
 }));
