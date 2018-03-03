@@ -76,3 +76,14 @@ function kw_setup() {
 	
 }
 add_action( 'after_setup_theme', 'kw_setup' );
+
+function kwer_body_class( $classes ) {
+
+	if ( is_front_page() ) {
+		$classes[] = 'front-page';
+	}
+	
+	return $classes;
+	
+}
+add_filter( 'body_class', 'kwer_body_class' );

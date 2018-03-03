@@ -9,7 +9,7 @@
  */
 header('X-UA-Compatible: IE=edge,chrome=1'); ?>
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html class="no-js<?php echo esc_attr( is_front_page() ? ' front-page' : '' ); ?>" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
