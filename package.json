@@ -17,7 +17,7 @@
     "child_process": "^1.0.2",
     "del": "^2.2.2",
     "fs": "0.0.1-security",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "github:gulpjs/gulp#6d71a65",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-download": "0.0.1",
