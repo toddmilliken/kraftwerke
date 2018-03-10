@@ -37,7 +37,12 @@ get_header();
 
 get_template_part($partial_dir . 'panels');	
 get_template_part($partial_dir . 'icon-grid');
-get_template_part($partial_dir . 'about');	
+get_template_part($partial_dir . 'about');
+
+/**
+ * Hook for displaying additional content below the main content.
+ */
+do_action( 'base_before_main_close' );
 
 /** Footer */
 get_footer();

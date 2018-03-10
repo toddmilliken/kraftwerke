@@ -2342,13 +2342,6 @@ pre {
   width: 100%;
 }
 
-.fullwidth-map {
-  width: 100%;
-  height: 400px;
-  border: #ccc solid 1px;
-  margin: 20px 0;
-}
-
 /* fixes potential theme css conflict */
 .acf-map img {
   max-width: inherit !important;
@@ -3636,6 +3629,100 @@ table tr:nth-child(even) {
   }
 }
 
+.layer.layer--google-map {
+  color: white;
+  margin: 0;
+}
+
+.layer--google-map {
+  background: #f4f7f6;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.map-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.map-content :first-child {
+  margin-top: 0;
+}
+
+.map-content :last-child {
+  margin-bottom: 0;
+}
+
+.marker-content {
+  padding: 1.25rem;
+  width: 15rem;
+}
+
+@media (max-width: 47.5em) {
+  .layer.layer--google-map {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .layer--google-map {
+    -webkit-flex-direction: column-reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .map-content {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2.5rem 0;
+  }
+  .fullwidth-map {
+    height: 25rem;
+  }
+}
+
+@media (min-width: 47.5625em) {
+  .layer.layer--google-map {
+    min-height: 31.25rem;
+  }
+  .layer.layer--google-map:before {
+    background: rgba(0, 0, 0, 0.7);
+    content: "";
+    max-width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+  }
+  .layer--google-map {
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .map-content {
+    max-width: 50%;
+  }
+  .fullwidth-map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@media (min-width: 76.3125em) {
+  .map-content {
+    max-width: none;
+  }
+  .map-content__inner {
+    max-width: 36.875rem;
+    padding-right: 2.5rem;
+  }
+}
+
 .layer--icon-grid,
 .layer--icon-grid.layer--front-page {
   background-color: #ebf7f6;
@@ -3643,6 +3730,24 @@ table tr:nth-child(even) {
 
 .grid--icons {
   padding-top: 1.875rem;
+}
+
+.layer--icon-grid .block-icon__description {
+  text-align: left;
+}
+
+.layer--icon-grid .block-icon__description .more {
+  border-bottom: none;
+}
+
+.layer--icon-grid .block-icon__description .more:after {
+  display: none;
+}
+
+@media (min-width: 64.0625em) {
+  .layer--icon-grid .block-icon__body {
+    padding: 0.625rem 3.75rem;
+  }
 }
 
 .layer {

@@ -90,7 +90,235 @@ function new_map( $el ) {
 	var args = {
 		zoom		: 16,
 		center		: new google.maps.LatLng(0, 0),
-		mapTypeId	: google.maps.MapTypeId.ROADMAP
+		mapTypeId	: google.maps.MapTypeId.ROADMAP,
+		mapTypeControl: false,
+		styles      : [
+			{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#ffffff"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"visibility": "on"
+					},
+					{
+						"weight": 0.9
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					},
+					{
+						"weight": 0.7
+					}
+				]
+			},
+			{
+				"featureType": "administrative.province",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#ffffff"
+					},
+					{
+						"weight": "2"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.province",
+				"elementType": "labels",
+				"stylers": [
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "labels",
+				"stylers": [
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.neighborhood",
+				"elementType": "labels",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.neighborhood",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "labels",
+				"stylers": [
+					{
+						"visibility": "simplified"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#42ab9e"
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "road.highway",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "road.arterial",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					},
+					{
+						"lightness": -20
+					}
+				]
+			},
+			{
+				"featureType": "road.local",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					},
+					{
+						"lightness": -17
+					}
+				]
+			},
+			{
+				"featureType": "transit",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#767676"
+					},
+					{
+						"lightness": -10
+					}
+				]
+			},
+			{
+				"featureType": "transit",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#004358"
+					}
+				]
+			}
+		]
 	};
 	
 	
@@ -109,9 +337,13 @@ function new_map( $el ) {
 		
 	});
 	
-	
+	if ( $(window).width() > 760 ) {
+		map.panBy(-300,0)
+	}
 	// center map
 	center_map( map );
+
+
 	
 	
 	// return
@@ -136,13 +368,18 @@ function new_map( $el ) {
 function add_marker( $marker, map ) {
 
 	// var
-	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+	var lat = $marker.attr('data-lat');
+	var lng = $marker.attr('data-lng');
+	var latlng = new google.maps.LatLng( lat, lng );
 
 	// create marker
 	var marker = new google.maps.Marker({
+		icon        : "data:image/svg+xml;charset=UTF-8,%3csvg baseProfile='basic' xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3e%3cpath fill='#42ab9e' stroke='#fff' stroke-width='2' d='M24 0c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z'%3e%3c/path%3e%3c/svg%3e",
 		position	: latlng,
 		map			: map
 	});
+
+	console.log( marker );
 
 	// add to array
 	map.markers.push( marker );

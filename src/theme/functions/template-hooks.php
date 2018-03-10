@@ -37,10 +37,15 @@ add_action( 'pre_get_posts', 'kwer_pre_get_posts' );
 
 function kwer_acf_google_map_api( $api ){
 	
-	$api['key'] = get_option('option_opts_google_maps_api_key') ;
+	$api['key'] = get_field( 'opts_google_maps_api_key', 'options' ) ;
 	
 	return $api;
 	
 }
 
 add_filter('acf/fields/google_map/api', 'kwer_acf_google_map_api');
+
+function kwer_google_map() {
+	get_template_part( 'partials/google-map' );
+}
+add_action( 'base_before_main_close', 'kwer_google_map' );

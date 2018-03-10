@@ -11,7 +11,7 @@ if ( $icon_items = get_post_meta( $post_id, 'icon_layer_items', true ) ) : ?>
 			}
 			
 			// Grid
-			echo '<div class="grid grid--thirds grid--icons">';
+			echo '<div class="grid grid--halves grid--icons">';
 			for ($x = 0; $x < $icon_items; $x++) : 
 				$icon_item_html = '';
 				$icon_item_fa_class = get_post_meta( $post_id, 'icon_layer_items_' . $x . '_layer_icon_item_icon', true );
@@ -37,7 +37,11 @@ if ( $icon_items = get_post_meta( $post_id, 'icon_layer_items', true ) ) : ?>
 								
 								// Desc
 								if ( !empty($icon_item_desc) ) {
-									$icon_item_html .= '<p class="block-icon__description">' . nl2br($icon_item_desc) . '</p>';
+									$icon_item_html .= '<p class="block-icon__description">' . nl2br($icon_item_desc);
+									if ( $icon_item_link_id ) {
+										$icon_item_html .= '&nbsp;<span class="more">' . __( 'Learn More', 'kraftwerke' )  . '</span>';
+									}
+									$icon_item_html .= '</p>';
 								}
 							
 							$icon_item_html .= '</div>';

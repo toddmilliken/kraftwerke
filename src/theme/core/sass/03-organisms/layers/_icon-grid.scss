@@ -6,3 +6,22 @@
 .grid--icons {
 	padding-top: rem(30);
 }
+
+.layer--icon-grid {
+	.block-icon__description {
+		text-align: left;
+
+		.more {
+			border-bottom: none;
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	@include tablet-landscape-up {
+		.block-icon__body {
+			padding: rem(10) rem(60);
+		}
+	}
+}

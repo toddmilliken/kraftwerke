@@ -18,6 +18,7 @@ header('X-UA-Compatible: IE=edge,chrome=1'); ?>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
 	<?php
 	/**
 	 * Fires immediately after the opening "body" tag

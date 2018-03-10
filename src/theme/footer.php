@@ -25,6 +25,8 @@
 			
 		 // Site wrapper - open 
 		kwer_wrapper_close();
+
+		
 		
 		// WP Footer hook
 		wp_footer();

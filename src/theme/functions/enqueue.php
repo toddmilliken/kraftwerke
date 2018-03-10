@@ -39,6 +39,11 @@ function child_enqueue_scripts() {
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, null, true );
 	wp_enqueue_script( 'jquery' );
+
+	$google_maps_api_key = get_field( 'opts_google_maps_api_key', 'options' );
+	if ( ! empty( $google_maps_api_key ) ) {
+		wp_enqueue_script( 'child-theme-google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ZilO-8ZzrsfnS5nrxlmpKFhR_rPjYik', array(), null, true );
+	}
 	
 	// footer scripts
 	wp_enqueue_script('child-theme-plugins-footer', get_stylesheet_directory_uri() . '/core/js/plugins-footer.js', array('jquery'), null, true);
