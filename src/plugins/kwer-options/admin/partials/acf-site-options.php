@@ -109,9 +109,9 @@ $options = array (
 			'zoom' => '',
 			'height' => '',
 		),
-		array (
-			'key' => 'field_59jghs8c66fac',
-			'label' => 'Google Maps Marker Content',
+		array(
+			'key' => 'field_5aa45f61hfg26',
+			'label' => 'Google Map Marker Content',
 			'name' => 'opts_google_map_marker_content',
 			'type' => 'wysiwyg',
 			'instructions' => '',

@@ -3657,8 +3657,18 @@ table tr:nth-child(even) {
 }
 
 .marker-content {
-  padding: 1.25rem;
+  color: #202121;
+  padding: 0.75rem;
   width: 15rem;
+}
+
+.marker-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.marker-content :last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 47.5em) {

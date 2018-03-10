@@ -271,7 +271,9 @@ function new_map( $el ) {
 	});
 	
 	if ( $(window).width() > 760 ) {
-		map.panBy(-300,0)
+		map.panBy(-300, -80 )
+	} else {
+		map.panBy(0, -120 )
 	}
 	// center map
 	center_map( map );
@@ -331,6 +333,8 @@ function add_marker( $marker, map ) {
 			infowindow.open( map, marker );
 
 		});
+
+		infowindow.open( map, marker );
 	}
 
 }

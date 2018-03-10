@@ -26,8 +26,18 @@
 
 // Marker content.
 .marker-content {
-	padding: rem(20);
+	color: theme-color("gray", "dark");
+	padding: rem(12);
 	width: rem(240);
+
+	p {
+		font-size: rem(16);
+		line-height: 1.5;
+	}
+
+	:last-child {
+		margin-bottom: 0;
+	}
 }
 
 @include tablet-portrait-down {
