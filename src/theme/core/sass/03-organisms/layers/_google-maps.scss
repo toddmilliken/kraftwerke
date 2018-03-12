@@ -57,6 +57,7 @@
 
 	.fullwidth-map {
 		height: rem(400);
+		position: relative;
 	}
 }
 
@@ -87,7 +88,7 @@
 
 	// Map.
 	.fullwidth-map {
-		position: absolute;
+		position: absolute !important;
 			top: 0;
 			right: 0;
 			bottom: 0;
@@ -95,9 +96,17 @@
 	}
 }
 
+@include inner-down {
+	.map-content {
+		padding-right: rem(40);
+		padding-left: rem(20);
+	}
+}
+
 @include inner-up {
 	.map-content {
-		max-width: none;
+		display: flex;
+		justify-content: flex-end;
 
 		&__inner {
 			max-width: rem( $width-center / 2 );

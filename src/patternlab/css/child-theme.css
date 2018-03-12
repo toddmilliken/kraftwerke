@@ -3687,6 +3687,7 @@ table tr:nth-child(even) {
   }
   .fullwidth-map {
     height: 25rem;
+    position: relative;
   }
 }
 
@@ -3715,7 +3716,7 @@ table tr:nth-child(even) {
     max-width: 50%;
   }
   .fullwidth-map {
-    position: absolute;
+    position: absolute !important;
     top: 0;
     right: 0;
     bottom: 0;
@@ -3723,9 +3724,21 @@ table tr:nth-child(even) {
   }
 }
 
+@media (max-width: 76.25em) {
+  .map-content {
+    padding-right: 2.5rem;
+    padding-left: 1.25rem;
+  }
+}
+
 @media (min-width: 76.3125em) {
   .map-content {
-    max-width: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   .map-content__inner {
     max-width: 36.875rem;

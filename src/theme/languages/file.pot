@@ -17,7 +17,7 @@ msgstr ""
 msgid "Follow Us"
 msgstr ""
 
-#: src/theme/header.php:62
+#: src/theme/header.php:63
 msgid "Search"
 msgstr ""
 
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Link Text"
 msgstr ""
 
-#: src/theme/classes/kwer-widget-text.php:130
+#: src/theme/classes/kwer-widget-text.php:130, src/theme/partials/front-page/icon-grid.php:42
 msgid "Learn More"
 msgstr ""
 
