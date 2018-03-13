@@ -25,6 +25,7 @@ function new_map( $el ) {
 		center		: new google.maps.LatLng(0, 0),
 		mapTypeId	: google.maps.MapTypeId.ROADMAP,
 		mapTypeControl: false,
+		scrollwheel: false,
 		styles      : [
 			{
 				"featureType": "all",

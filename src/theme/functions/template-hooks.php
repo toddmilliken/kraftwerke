@@ -49,3 +49,4 @@ function kwer_google_map() {
 	get_template_part( 'partials/google-map' );
 }
 add_action( 'base_before_main_close', 'kwer_google_map' );
+add_action( 'kwer_before_main_close', 'kwer_google_map' );
