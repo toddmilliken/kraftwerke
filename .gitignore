@@ -1,6 +1,5 @@
 # Ignore WordPress files in the root
 .htaccess
-index.php
 
 # Ignore directory where WordPress lives
 /site
