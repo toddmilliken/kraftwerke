@@ -3590,6 +3590,15 @@ table tr:nth-child(even) {
   margin-bottom: 0;
 }
 
+.layer__inner:before, .layer__inner:after {
+  content: " ";
+  display: table;
+}
+
+.layer__inner:after {
+  clear: both;
+}
+
 @media screen and (max-width: 900px) {
   .layer__content-wrapper {
     display: -webkit-flex;
@@ -3640,6 +3649,7 @@ table tr:nth-child(even) {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  width: 100%;
 }
 
 .map-content {
