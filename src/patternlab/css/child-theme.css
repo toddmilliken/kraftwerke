@@ -4183,6 +4183,7 @@ table tr:nth-child(even) {
 html.front-page,
 body.front-page {
   height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 html.front-page .outer-wrapper,
