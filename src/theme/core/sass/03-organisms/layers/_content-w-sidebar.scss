@@ -18,6 +18,9 @@
 	margin-bottom: 0;
 }
 
+.layer__inner {
+	@include clearfix;
+}
 
 
 @media screen and (max-width: 900px) {
