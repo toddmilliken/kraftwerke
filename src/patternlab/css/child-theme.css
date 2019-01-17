@@ -846,7 +846,7 @@ img[data-original].loaded {
 .gfield_time_hour input,
 .gfield_time_minute input,
 .gfield_time_ampm input {
-  width: 3.375rem;
+  width: 4rem;
 }
 
 .gfield_time_hour label,
