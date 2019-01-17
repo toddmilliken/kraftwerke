@@ -1,6 +1,6 @@
 {
   "name": "kraftwerke",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "The base parent/child theme setup for sites built by emagine.",
   "main": "index.js",
   "scripts": {
